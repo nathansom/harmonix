@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://harmonix-be.azurewebsites.net/api/',
-  hubUrl: 'https://harmonix-be.azurewebsites.net/hubs/'
+  apiUrl: 'https://localhost:5001/api/',
+  hubUrl: 'https://localhost:5001/hubs/'
 };
 
 /*

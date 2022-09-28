@@ -1,70 +1,55 @@
-<form
-  (ngSubmit)="registerForm.valid && register()"
-  [formGroup]="registerForm"
-  autocomplete="off"
-  class="card p-3"
->
-  <h2 class="text-center text-primary">Sign up</h2>
-  <hr />
-  <div class="container">
-      <select name="gender" class="form-control my-3 py-0" formControlName="gender" placeholder="Gender">
-        <option value="" selected>Gender</option>
-        <option *ngFor="let gender of genderList" value="{{gender.value}}">
-          {{gender.display}}
-        </option>
-      </select>
-    <app-text-input
-      [formControl]="$any(registerForm.controls['username'])"
-      [label]="'Username'"
-    ></app-text-input>
-    <app-text-input
-      [formControl]="$any(registerForm.controls['knownAs'])"
-      [label]="'Known As'"
-    ></app-text-input>
-    <app-date-input
-      [formControl]="$any(registerForm.controls['dateOfBirth'])"
-      [label]="'Date of Birth'"
-      [maxDate]="maxDate"
-    ></app-date-input>
-    <app-text-input
-      [formControl]="$any(registerForm.controls['city'])"
-      [label]="'City'"
-    ></app-text-input>
-    <app-text-input
-      [formControl]="$any(registerForm.controls['country'])"
-      [label]="'Country'"
-    ></app-text-input>
-    <app-text-input
-      [formControl]="$any(registerForm.controls['password'])"
-      [label]="'Password'"
-      [type]="'password'"
-    ></app-text-input>
-    <app-text-input
-      [formControl]="$any(registerForm.controls['confirmPassword'])"
-      [label]="'Confirm Password'"
-      [type]="'password'"
-    ></app-text-input>
+<form (ngSubmit)="registerForm.valid && register()" [formGroup]="registerForm" autocomplete="off" class="card p-3">
+    <h2 class="text-center text-primary">Sign up</h2>
+    <hr />
 
-    <div class="row mt-2" *ngIf="validationErrors && validationErrors.length > 0">
-        <ul class="text-danger">
-            <li *ngFor="let error of validationErrors">
-                {{ error }}
-            </li>
-        </ul>
-    </div>
+    <div class="container">
+        <app-text-input [formControl]="$any(registerForm.controls['username'])" [label]="'Username'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['firstName'])" [label]="'First Name'">
+        </app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['lastName'])" [label]="'Last Name'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['knownAs'])" [label]="'Known As'"></app-text-input>
+        <div class="radiobuttons-container col-md-4 mb-2">
+            <div *ngFor="let gender of genderList" class="form-check form-check-inline ml-2">
+                <input
+                       class="form-check-input" 
+                       type="radio" 
+                       name="gender" 
+                       id="{{gender.item_text.toLowerCase() + 'Radio'}}" 
+                       value="{{gender.item_text.toLowerCase()}}"
+                       formControlName="gender" 
+                />
+                <label class="form-check-label" for="{{gender.item_text.toLowerCase() + 'Radio'}}">{{gender.item_text}}</label>
+            </div>
+        </div>
+        <app-text-input [formControl]="$any(registerForm.controls['email'])" [label]="'Email'"></app-text-input>
+        <app-date-input [formControl]="$any(registerForm.controls['dateOfBirth'])" [label]="'Date of Birth'"
+            [maxDate]="maxDate"></app-date-input>
+        <app-text-input [formControl]="$any(registerForm.controls['city'])" [label]="'City'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['province'])" [label]="'Province'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['country'])" [label]="'Country'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['occupation'])" [label]="'Occupation separated by comma'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['skills'])" [label]="'Skills separated by comma'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['genres'])" [label]="'Genres separated by comma'"></app-text-input>
+        <app-multiselect [formControl]="$any(registerForm.controls['affiliation'])" [dropdownList]="affiliationList"
+            [label]="'Affiliation'"></app-multiselect>
+        <app-text-input [formControl]="$any(registerForm.controls['password'])" [label]="'Password'"
+            [type]="'password'"></app-text-input>
+        <app-text-input [formControl]="$any(registerForm.controls['confirmPassword'])" [label]="'Confirm Password'"
+            [type]="'password'"></app-text-input>
 
-    <div
-      class="container form-group"
-      style="display: flex; justify-content: center"
-    >
-      <button [disabled]="!registerForm.valid" class="btn btn-primary" style="margin: 10px">Register</button>
-      <button
-        class="btn btn-outline-primary"
-        (click)="cancel()"
-        style="margin: 10px"
-      >
-        Cancel
-      </button>
+        <div class="row mt-2" *ngIf="validationErrors && validationErrors.length > 0">
+            <ul class="text-danger">
+                <li *ngFor="let error of validationErrors">
+                    {{ error }}
+                </li>
+            </ul>
+        </div>
+
+        <div class="container form-group" style="display: flex; justify-content: center">
+            <button [disabled]="!registerForm.valid" class="btn btn-primary" style="margin: 10px">Register</button>
+            <button class="btn btn-outline-primary" (click)="cancel()" style="margin: 10px">
+                Cancel
+            </button>
+        </div>
     </div>
-  </div>
 </form>

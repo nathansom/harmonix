@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-4">
+    <div class="col-md-4 mb-3 mb-md-0">
         <div class="card">
             <img src="{{member?.photoUrl || './assets/user.png'}}" alt="{{member.knownAs}}"
                 class="card-img-top img-thumbnail">
@@ -29,7 +29,7 @@
             </div>
         </div>
     </div>
-    <div class="col-8 glass-container p-2">
+    <div class="col-md-8 glass-container p-2 mb-3 mb-md-0">
         <tabset class="member-tabset" #memberTabs>
             <tab heading="About {{member.knownAs}}" (selectTab)="onTabActivated($event)">
                 <div class="container">

@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
 namespace API.Entities
@@ -22,5 +23,9 @@ namespace API.Entities
     public ICollection<Message> MessagesSent { get; set; }
     public ICollection<Message> MessagesReceived { get; set; }
     public ICollection<AppUserRole> UserRoles { get; set; }
+    public ICollection<JobSave> SavedJobs{get; set;}
+
+    public ICollection<Job> CreatedJobs{get; set;}
+    
   }
 }

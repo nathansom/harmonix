@@ -1,309 +1,152 @@
 [
-    {
-        "Title": "Technician - Drummer",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "We are looking for a rhythmic drummer to be responsible for playing the drum set. The responsibilities of a drummer include attending rehearsals, updating their knowledge of new music, and playing at events. To be successful as a drummer, you should have excellent rhythm, superior timing and consistency, and be self-motivated. Ultimately, a top-notch drummer should be dedicated, creative and work well within a team.",
-        "Salary": 50000,
-        "City": "Kingston",
-        "ProvinceOrState": "Ontario",
-        "Country": "Canada",
-        "Genres": [
-            "Semiquaver",
-            "Rock 'n' Roll",
-            "Jazz",
-            "Latin Music",
-            "Hip Hop"
-        ],
-        "JobType": "Contract",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-12-12",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Technician - Keyboard",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "You can make a difference! When deciding on the best gear for their needs, musicians of all playing levels and interests rely on the expertise and advice that a Sam Ash product specialist provides. Be part of a team of musicians whose focus is helping customers achieve their musical dreams. Sam Ash Music seeks super-friendly, sales oriented / career-minded people who enjoy playing music, learning about new gear and teaching others how to use that gear. Why not earn a living surrounded by the gear you dream about all day? As a sales associate, you'll be a vital contributor to our goal of providing the knowledge, guidance and very best service possible to ensure that our customers are treated to a great experience on every visit or phone call. If you love making music and helping others, we'd love to speak to you.",
-        "Salary": 62000,
-        "City": "Victoria",
-        "ProvinceOrState": "British Columbia",
-        "Country": "Canada",
-        "Genres": [
-            "Anti-Folk",
-            "Rock 'n' Roll",
-            "Jazz",
-            "Latin Music",
-            "Synthcore",
-            "Hip Hop"
-        ],
-        "JobType": "Part Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-11-28",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Singer",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "Entertainment company specializing in live bands and performance seeking vocalists.",
-        "Salary": 42000,
-        "City": "Victoria",
-        "ProvinceOrState": "British Columbia",
-        "Country": "Canada",
-        "Genres": [
-            "Funk",
-            "Soul",
-            "Jazz",
-            "Motown",
-            "Rock",
-            "Hip Hop"
-        ],
-        "JobType": "Part Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-10-05",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Guitar Artist",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "Rockstar Music is a network of university educated musicians, teachers and recording industry professionals. We provide private, one-on-one, online and in-home music lessons, as well as community-based music programs, like Rock Bands and Uke jams. We are currently looking for a Guitar Instructor to join our team.",
-        "Salary": 58000,
-        "City": "London",
-        "ProvinceOrState": "Ontario",
-        "Country": "Canada",
-        "Genres": [
-            "Funk",
-            "Soul",
-            "Jazz",
-            "Motown",
-            "Rock",
-            "Hip Hop"
-        ],
-        "JobType": "Full Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-10-25",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Sound Engineer",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "As the Sound Designer, you will be responsible for creating engaging and detailed sound design for various elements of the game including sound design for levels, weapons, A.I., U.I., cinematics, animations, marketing and other gameplay events. You possess a passion for field recording, Foley, and using DAW-based tools to create sound design. You will take direction from Senior Sound Designers and the Audio Director.",
-        "Salary": 58000,
-        "City": "Calgary",
-        "ProvinceOrState": "Alberta",
-        "Country": "Canada",
-        "Genres": [
-            "Funk",
-            "Soul",
-            "Jazz",
-            "Motown",
-            "Rock",
-            "Hip Hop"
-        ],
-        "JobType": "Full Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-11-19",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Guitar Artist",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "Rockstar Music is a network of university educated musicians, teachers and recording industry professionals. We provide private, one-on-one, online and in-home music lessons, as well as community-based music programs, like Rock Bands and Uke jams. We are currently looking for a Guitar Instructor to join our team.",
-        "Salary": 78000,
-        "City": "Edmonton",
-        "ProvinceOrState": "Alberta",
-        "Country": "Canada",
-        "Genres": [
-            "Funk",
-            "Soul",
-            "Jazz",
-            "Motown",
-            "Rock",
-            "Hip Hop"
-        ],
-        "JobType": "Full Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-12-16",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Technician - Keyboard",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "You can make a difference! When deciding on the best gear for their needs, musicians of all playing levels and interests rely on the expertise and advice that a Sam Ash product specialist provides. Be part of a team of musicians whose focus is helping customers achieve their musical dreams. Sam Ash Music seeks super-friendly, sales oriented / career-minded people who enjoy playing music, learning about new gear and teaching others how to use that gear. Why not earn a living surrounded by the gear you dream about all day? As a sales associate, you'll be a vital contributor to our goal of providing the knowledge, guidance and very best service possible to ensure that our customers are treated to a great experience on every visit or phone call. If you love making music and helping others, we'd love to speak to you.",
-        "Salary": 62000,
-        "City": "Saskatoon",
-        "ProvinceOrState": "Saskatchewan",
-        "Country": "Canada",
-        "Genres": [
-            "Anti-Folk",
-            "Rock 'n' Roll",
-            "Jazz",
-            "Latin Music",
-            "Synthcore",
-            "Hip Hop"
-        ],
-        "JobType": "Part Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-11-31",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Music Director",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "Avenue Road Music and Performance Academy, home of the Gordon Lightfoot Concert Hall, seeks a Music School Director to lead the new Academy to prominence. The School is located in a historic mansion at 460 Avenue Road in mid-town Toronto. The opportunity will appeal to a talented and enterprising music community leader, with ambitions for professional growth.",
-        "Salary": 55000,
-        "City": "Toronto",
-        "ProvinceOrState": "Ontario",
-        "Country": "Canada",
-        "Genres": [
-            "Anti-Folk",
-            "Rock 'n' Roll",
-            "Jazz",
-            "Latin Music",
-            "Synthcore",
-            "Hip Hop"
-        ],
-        "JobType": "Part Time",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-10-01",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Technician - Drummer",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "We are looking for a rhythmic drummer to be responsible for playing the drum set. The responsibilities of a drummer include attending rehearsals, updating their knowledge of new music, and playing at events. To be successful as a drummer, you should have excellent rhythm, superior timing and consistency, and be self-motivated. Ultimately, a top-notch drummer should be dedicated, creative and work well within a team.",
-        "Salary": 45000,
-        "City": "Hamilon",
-        "ProvinceOrState": "Ontario",
-        "Country": "Canada",
-        "Genres": [
-            "Semiquaver",
-            "Rock 'n' Roll",
-            "Jazz",
-            "Latin Music",
-            "Hip Hop"
-        ],
-        "JobType": "Contract",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-10-12",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    },
-    {
-        
-        "Title": "Technician - Keyboard",
-        "OrgId": 0,
-        "JobPosterId": 0,
-        "LogoUrl": "",
-        "Description": "You can make a difference! When deciding on the best gear for their needs, musicians of all playing levels and interests rely on the expertise and advice that a Sam Ash product specialist provides. Be part of a team of musicians whose focus is helping customers achieve their musical dreams. Sam Ash Music seeks super-friendly, sales oriented / career-minded people who enjoy playing music, learning about new gear and teaching others how to use that gear. Why not earn a living surrounded by the gear you dream about all day? As a sales associate, you'll be a vital contributor to our goal of providing the knowledge, guidance and very best service possible to ensure that our customers are treated to a great experience on every visit or phone call. If you love making music and helping others, we'd love to speak to you.",
-        "Salary": 42000,
-        "City": "Victoria",
-        "ProvinceOrState": "British Columbia",
-        "Country": "Canada",
-        "Genres": [
-            "Anti-Folk",
-            "Rock 'n' Roll",
-            "Jazz",
-            "Latin Music",
-            "Synthcore",
-            "Hip Hop"
-        ],
-        "JobType": "Contract",
-        "SkilledRequired": [
-            "Training and skill in percussion.",
-            "Must be creative.",
-            "Must be able to take initiative.",
-            "Work well in a team."
-        ],
-        "ApplicationUrl": "https://google.com",
-        "Deadline": "2022-11-13",
-        "DateCreated": "2022-09-23",
-        "LastUpdated": "2022-09-23"
-    }
+  {
+    "Title": "Technician - Drummer",
+    "OrgId": 1,
+    "JobPosterId": 1,
+    "LogoUrl": "",
+    "Description": "We are looking for a rhythmic drummer to be responsible for playing the drum set. The responsibilities of a drummer include attending rehearsals, updating their knowledge of new music, and playing at events. To be successful as a drummer, you should have excellent rhythm, superior timing and consistency, and be self-motivated. Ultimately, a top-notch drummer should be dedicated, creative and work well within a team.",
+    "Salary": 50000,
+    "City": "Kingston",
+    "ProvinceOrState": "Ontario",
+    "Country": "Canada",
+    "Genres": "Semiquaver,Rock 'n' Roll,Jazz,Latin Music,Hip Hop",
+    "JobType": "Contract",
+    "SkillsRequired": "percussion,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Technician - Keyboard",
+    "OrgId": 2,
+    "JobPosterId": 1,
+    "LogoUrl": "",
+    "Description": "You can make a difference! When deciding on the best gear for their needs, musicians of all playing levels and interests rely on the expertise and advice that a Sam Ash product specialist provides. Be part of a team of musicians whose focus is helping customers achieve their musical dreams. Sam Ash Music seeks super-friendly, sales oriented / career-minded people who enjoy playing music, learning about new gear and teaching others how to use that gear. Why not earn a living surrounded by the gear you dream about all day? As a sales associate, you'll be a vital contributor to our goal of providing the knowledge, guidance and very best service possible to ensure that our customers are treated to a great experience on every visit or phone call. If you love making music and helping others, we'd love to speak to you.",
+    "Salary": 62000,
+    "City": "Victoria",
+    "ProvinceOrState": "British Columbia",
+    "Country": "Canada",
+    "Genres": "Anti-Folk,Rock 'n' Roll,Jazz,Latin Music,Synthcore,Hip Hop",
+    "JobType": "Part Time",
+    "SkillsRequired": "keyboard,creativity,leadership,teamwork,electronic music",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Singer",
+    "OrgId": 3,
+    "JobPosterId": 2,
+    "LogoUrl": "",
+    "Description": "Entertainment company specializing in live bands and performance seeking vocalists.",
+    "Salary": 42000,
+    "City": "Victoria",
+    "ProvinceOrState": "British Columbia",
+    "Country": "Canada",
+    "Genres": "Funk,Soul,Jazz,Motown,Rock,Hip Hop",
+    "JobType": "Part Time",
+    "SkillsRequired": "singing,creativity,Basic French,Basic Spanish,Basic knowledge of IPA,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Guitar Artist",
+    "OrgId": 4,
+    "JobPosterId": 2,
+    "LogoUrl": "",
+    "Description": "Rockstar Music is a network of university educated musicians, teachers and recording industry professionals. We provide private, one-on-one, online and in-home music lessons, as well as community-based music programs, like Rock Bands and Uke jams. We are currently looking for a Guitar Instructor to join our team.",
+    "Salary": 58000,
+    "City": "London",
+    "ProvinceOrState": "Ontario",
+    "Country": "Canada",
+    "Genres": "Funk,Soul,Jazz,Motown,Rock,Hip Hop",
+    "JobType": "Full Time",
+    "SkillsRequired": "rock guitar,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Sound Engineer",
+    "OrgId": 5,
+    "JobPosterId": 3,
+    "LogoUrl": "",
+    "Description": "As the Sound Designer, you will be responsible for creating engaging and detailed sound design for various elements of the game including sound design for levels, weapons, A.I., U.I., cinematics, animations, marketing and other gameplay events. You possess a passion for field recording, Foley, and using DAW-based tools to create sound design. You will take direction from Senior Sound Designers and the Audio Director.",
+    "Salary": 58000,
+    "City": "Calgary",
+    "ProvinceOrState": "Alberta",
+    "Country": "Canada",
+    "Genres": "Funk,Soul,Jazz,Motown,Rock,Hip Hop",
+    "JobType": "Full Time",
+    "SkillsRequired": "sound engineering,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Guitar Artist",
+    "OrgId": 6,
+    "JobPosterId": 3,
+    "LogoUrl": "",
+    "Description": "Rockstar Music is a network of university educated musicians, teachers and recording industry professionals. We provide private, one-on-one, online and in-home music lessons, as well as community-based music programs, like Rock Bands and Uke jams. We are currently looking for a Guitar Instructor to join our team.",
+    "Salary": 78000,
+    "City": "Edmonton",
+    "ProvinceOrState": "Alberta",
+    "Country": "Canada",
+    "Genres": "Funk,Soul,Jazz,Motown,Rock,Hip Hop",
+    "JobType": "Full Time",
+    "SkillsRequired": "rock guitar,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Technician - Keyboard",
+    "OrgId": 7,
+    "JobPosterId": 3,
+    "LogoUrl": "",
+    "Description": "You can make a difference! When deciding on the best gear for their needs, musicians of all playing levels and interests rely on the expertise and advice that a Sam Ash product specialist provides. Be part of a team of musicians whose focus is helping customers achieve their musical dreams. Sam Ash Music seeks super-friendly, sales oriented / career-minded people who enjoy playing music, learning about new gear and teaching others how to use that gear. Why not earn a living surrounded by the gear you dream about all day? As a sales associate, you'll be a vital contributor to our goal of providing the knowledge, guidance and very best service possible to ensure that our customers are treated to a great experience on every visit or phone call. If you love making music and helping others, we'd love to speak to you.",
+    "Salary": 62000,
+    "City": "Saskatoon",
+    "ProvinceOrState": "Saskatchewan",
+    "Country": "Canada",
+    "Genres": "Anti-Folk,Rock 'n' Roll,Jazz,Latin Music,Synthcore,Hip Hop",
+    "JobType": "Part Time",
+    "SkillsRequired": "keyboard,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Music Director",
+    "OrgId": 8,
+    "JobPosterId": 1,
+    "LogoUrl": "",
+    "Description": "Avenue Road Music and Performance Academy, home of the Gordon Lightfoot Concert Hall, seeks a Music School Director to lead the new Academy to prominence. The School is located in a historic mansion at 460 Avenue Road in mid-town Toronto. The opportunity will appeal to a talented and enterprising music community leader, with ambitions for professional growth.",
+    "Salary": 55000,
+    "City": "Toronto",
+    "ProvinceOrState": "Ontario",
+    "Country": "Canada",
+    "Genres": "Anti-Folk,Rock 'n' Roll,Jazz,Latin Music,Synthcore,Hip Hop",
+    "JobType": "Part Time",
+    "SkillsRequired": "music production,management,business communication,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Technician - Drummer",
+    "OrgId": 9,
+    "JobPosterId": 4,
+    "LogoUrl": "",
+    "Description": "We are looking for a rhythmic drummer to be responsible for playing the drum set. The responsibilities of a drummer include attending rehearsals, updating their knowledge of new music, and playing at events. To be successful as a drummer, you should have excellent rhythm, superior timing and consistency, and be self-motivated. Ultimately, a top-notch drummer should be dedicated, creative and work well within a team.",
+    "Salary": 45000,
+    "City": "Hamilon",
+    "ProvinceOrState": "Ontario",
+    "Country": "Canada",
+    "Genres": "Semiquaver,Rock 'n' Roll,Jazz,Latin Music,Hip Hop",
+    "JobType": "Contract",
+    "SkillsRequired": "percussion,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  },
+  {
+    "Title": "Technician - Keyboard",
+    "OrgId": 10,
+    "JobPosterId": 4,
+    "LogoUrl": "",
+    "Description": "You can make a difference! When deciding on the best gear for their needs, musicians of all playing levels and interests rely on the expertise and advice that a Sam Ash product specialist provides. Be part of a team of musicians whose focus is helping customers achieve their musical dreams. Sam Ash Music seeks super-friendly, sales oriented / career-minded people who enjoy playing music, learning about new gear and teaching others how to use that gear. Why not earn a living surrounded by the gear you dream about all day? As a sales associate, you'll be a vital contributor to our goal of providing the knowledge, guidance and very best service possible to ensure that our customers are treated to a great experience on every visit or phone call. If you love making music and helping others, we'd love to speak to you.",
+    "Salary": 42000,
+    "City": "Victoria",
+    "ProvinceOrState": "British Columbia",
+    "Country": "Canada",
+    "Genres": "Anti-Folk,Rock 'n' Roll,Jazz,Latin Music,Synthcore,Hip Hop",
+    "JobType": "Contract",
+    "SkillsRequired": "keyboard,creativity,leadership,teamwork",
+    "ApplicationUrl": "https://google.com"
+  }
 ]

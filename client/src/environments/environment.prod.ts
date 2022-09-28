@@ -3,4 +3,3 @@ export const environment = {
   apiUrl: 'https://harmonix-be.azurewebsites.net/api/',
   hubUrl: 'https://harmonix-be.azurewebsites.net/hubs/'
 };
-

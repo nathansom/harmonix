@@ -31,6 +31,7 @@
               "./node_modules/bootswatch/dist/lux/bootstrap.min.css",
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/ngx-toastr/toastr.css",
+              "./node_modules/ng-multiselect-dropdown/themes/ng-multiselect-dropdown.theme.scss",
               "src/styles.css"
             ],
             "scripts": []

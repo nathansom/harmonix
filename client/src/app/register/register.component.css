@@ -1,0 +1,23 @@
+  .card {
+    width: 600px;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .radiobuttons-container {
+    border: rgba(0,0,0,0.12) 1px solid;
+    border-radius: 5px;
+    position: relative;
+    padding: 1em;    
+  }
+  
+  .radiobuttons-container::after {
+    content: "Gender";
+    height: 19px;
+    position: absolute;
+    font-size: 12px;
+    left: 2%;
+    top: -1.2em;
+    background: white;
+    padding: 0.5em;
+  }

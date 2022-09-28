@@ -13,8 +13,8 @@
     <div class="form-group px-2">
       <label class="text-primary">Show: </label>
       <select name="gender" style="width: 5.5rem;" [(ngModel)]="userParams.gender" class="form-control ml-1">
-        <option *ngFor="let gender of genderList" [value]="gender.value">
-          {{gender.display}}
+        <option *ngFor="let gender of genderList" [value]="gender.item_text.toLowerCase()">
+          {{gender.item_text}}
         </option>
       </select>
     </div>

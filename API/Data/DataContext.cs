@@ -17,10 +17,26 @@ namespace API.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Group> Groups { get; set; }
         public DbSet<Connection> Connections { get; set; }
+        public DbSet<Job> Jobs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
+
+            builder.Entity<JobSave>()
+              .HasKey(k => new { k.JobId, k.SavedUserId });
+
+            builder.Entity<JobSave>()
+              .HasOne<AppUser>(u=>u.SavedUser)
+              .WithMany(u=>u.SavedJobs)
+              .HasForeignKey(k=> k.SavedUserId)
+              .OnDelete(DeleteBehavior.Cascade);
+
+            builder.Entity<JobSave>()
+              .HasOne<Job>(u=>u.SavedJob)
+              .WithMany(u=>u.SavedByUsers)
+              .HasForeignKey(k=> k.JobId)
+              .OnDelete(DeleteBehavior.Cascade);
 
             builder.Entity<Group>()
                 .HasMany(x => x.Connections)

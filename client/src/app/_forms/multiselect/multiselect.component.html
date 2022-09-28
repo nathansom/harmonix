@@ -1,0 +1,10 @@
+<div class="mb-3">
+    <ng-multiselect-dropdown
+        [formControl]="ngControl.control"
+        [placeholder]="label"
+        [settings]="dropdownSettings"
+        [data]="dropdownList"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)">
+    </ng-multiselect-dropdown>
+</div>

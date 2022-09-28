@@ -3,6 +3,7 @@ using System;
 using API.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace API.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220921151035_IdentityAdded")]
+    partial class IdentityAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.8");
@@ -152,110 +154,6 @@ namespace API.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-                });
-
-            modelBuilder.Entity("API.Entities.Connection", b =>
-                {
-                    b.Property<string>("ConnectionId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("GroupName")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Username")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("ConnectionId");
-
-                    b.HasIndex("GroupName");
-
-                    b.ToTable("Connections");
-                });
-
-            modelBuilder.Entity("API.Entities.Group", b =>
-                {
-                    b.Property<string>("Name")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Name");
-
-                    b.ToTable("Groups");
-                });
-
-            modelBuilder.Entity("API.Entities.Job", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ApplicationUrl")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("City")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Country")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("DateCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("Deadline")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Genres")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int?>("JobPosterId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("JobType")
-                        .HasColumnType("TEXT");
-
-                    b.Property<DateTime>("LastUpdated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("LogoUrl")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("OrgId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("ProvinceOrState")
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("Salary")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("SkillsRequired")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Title")
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("JobPosterId");
-
-                    b.ToTable("Jobs");
-                });
-
-            modelBuilder.Entity("API.Entities.JobSave", b =>
-                {
-                    b.Property<int>("JobId")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int>("SavedUserId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("JobId", "SavedUserId");
-
-                    b.HasIndex("SavedUserId");
-
-                    b.ToTable("JobSave");
                 });
 
             modelBuilder.Entity("API.Entities.Message", b =>
@@ -443,42 +341,6 @@ namespace API.Data.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("API.Entities.Connection", b =>
-                {
-                    b.HasOne("API.Entities.Group", null)
-                        .WithMany("Connections")
-                        .HasForeignKey("GroupName")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("API.Entities.Job", b =>
-                {
-                    b.HasOne("API.Entities.AppUser", "JobPoster")
-                        .WithMany("CreatedJobs")
-                        .HasForeignKey("JobPosterId");
-
-                    b.Navigation("JobPoster");
-                });
-
-            modelBuilder.Entity("API.Entities.JobSave", b =>
-                {
-                    b.HasOne("API.Entities.Job", "SavedJob")
-                        .WithMany("SavedByUsers")
-                        .HasForeignKey("JobId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("API.Entities.AppUser", "SavedUser")
-                        .WithMany("SavedJobs")
-                        .HasForeignKey("SavedUserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("SavedJob");
-
-                    b.Navigation("SavedUser");
-                });
-
             modelBuilder.Entity("API.Entities.Message", b =>
                 {
                     b.HasOne("API.Entities.AppUser", "Recipient")
@@ -571,8 +433,6 @@ namespace API.Data.Migrations
 
             modelBuilder.Entity("API.Entities.AppUser", b =>
                 {
-                    b.Navigation("CreatedJobs");
-
                     b.Navigation("LikedByUsers");
 
                     b.Navigation("LikedUsers");
@@ -583,19 +443,7 @@ namespace API.Data.Migrations
 
                     b.Navigation("Photos");
 
-                    b.Navigation("SavedJobs");
-
                     b.Navigation("UserRoles");
-                });
-
-            modelBuilder.Entity("API.Entities.Group", b =>
-                {
-                    b.Navigation("Connections");
-                });
-
-            modelBuilder.Entity("API.Entities.Job", b =>
-                {
-                    b.Navigation("SavedByUsers");
                 });
 #pragma warning restore 612, 618
         }
