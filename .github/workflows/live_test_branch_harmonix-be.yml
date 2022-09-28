@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'HARMONIX-BE'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_9E5D981E8D994BD08066838A649E72AB }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_5CEAF7ED7407417D9875580F1B743C2C }}
           package: .
