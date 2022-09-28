@@ -7,6 +7,8 @@ on:
   push:
     branches:
       - Live_Test_Branch
+    paths:
+      - 'client/**'
   workflow_dispatch:
 
 jobs:
@@ -23,15 +25,14 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          npm install
-          npm run build --if-present
-          npm run test --if-present
-
+          cd client
+          npm install --force
+          npm run build --prod
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
           name: node-app
-          path: .
+          path: ./client/dist/client
 
   deploy:
     runs-on: ubuntu-latest
@@ -52,5 +53,5 @@ jobs:
         with:
           app-name: 'HARMONIX-FE'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3B398371BEA44FACAEEBAD0B18A7FE65 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CCB9B867BFFF439DB7272235A0EDCE1F }}
           package: .
