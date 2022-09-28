@@ -21,7 +21,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options=>{
-                options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
             });
             services.AddApplicationServices(_config);
             services.AddControllers();
@@ -54,7 +54,7 @@ namespace API
             app.UseCors(x => x.AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()
-                    .WithOrigins("https://localhost:4200"));
+                    .WithOrigins("https://harmonix-fe.azurewebsites.net"));
 
             app.UseAuthentication();
 
