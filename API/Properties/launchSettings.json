@@ -16,7 +16,7 @@
       "launchUrl": "swagger",
       "applicationUrl": "https://harmonix-be.azurewebsites.net",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
     "IIS Express": {

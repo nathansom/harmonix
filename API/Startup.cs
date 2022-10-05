@@ -54,7 +54,7 @@ namespace API
             app.UseCors(x => x.AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()
-                    .WithOrigins("https://harmonix-be.azurewebsites.net"));
+                    .WithOrigins("https://harmonix-fe.azurewebsites.net"));
 
             app.UseAuthentication();
 
