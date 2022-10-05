@@ -26,7 +26,7 @@ namespace API.Controllers
 
         }
 
-        //user to save job by id - api/JobSave/id
+        //user to save job by id - api/jobSave/id
         [HttpPost("{id}")]
         public async Task<ActionResult> SaveJob(int id){
             var sourceUserId = User.GetUserId();

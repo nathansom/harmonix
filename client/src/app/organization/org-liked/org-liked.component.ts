@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Job } from 'src/app/_models/Job';
+import { Job } from 'src/app/_models/job';
 import { Organization } from 'src/app/_models/organization';
 import { Pagination } from 'src/app/_models/pagination';
 import { JobsService } from 'src/app/_services/jobs.service';
