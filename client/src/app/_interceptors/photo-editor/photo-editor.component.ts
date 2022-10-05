@@ -73,8 +73,6 @@ export class PhotoEditorComponent implements OnInit {
   }
 
   initializeUpdloader() {
-    console.log("member");
-    console.log(this.member);
     var endPoint = "users/add-photo";
     if(this.uploadType === "org"){
       endPoint = "organizations/add-photo/"+this.member.id;
@@ -88,8 +86,6 @@ export class PhotoEditorComponent implements OnInit {
       autoUpload: false,
       maxFileSize: 10 * 1024 * 1024
     });
-    console.log(this.uploader);
-    console.log(this.baseUrl+endPoint);
 
     this.uploader.onAfterAddingFile = (file) => {
       file.withCredentials = false;
@@ -102,8 +98,6 @@ export class PhotoEditorComponent implements OnInit {
     
 
     this.uploader.onSuccessItem = (item, response, status, headers) => {
-      console.log("response");
-      console.log(response);
       if (response) {
         const photo: Photo = JSON.parse(response);
         this.member.photos.push(photo);
@@ -111,7 +105,6 @@ export class PhotoEditorComponent implements OnInit {
           this.user.photoUrl = photo.url;
           this.member.photoUrl = photo.url;
           this.accountService.setCurrentUser(this.user);
-          // this.orgService.set
         }
       }
     } 
