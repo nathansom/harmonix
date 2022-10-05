@@ -19,6 +19,7 @@
         <app-text-input
           [formControl]="$any(addOrganizationForm.controls['established'])"
           [label]="'Established'"
+          [type]="'number'"
         ></app-text-input>
 
         <h4 class="text-primary">Location Details:</h4>
@@ -46,7 +47,6 @@
         <app-text-input
             [formControl]="$any(addOrganizationForm.controls['introduction'])"
             [label]="'Introduction'"
-            [isTextArea]="true"
           ></app-text-input>
         <!-- implement text area here instead of app-text-input  <textarea></textarea> -->
     

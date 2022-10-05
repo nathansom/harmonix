@@ -1,117 +1,116 @@
-<div class="glass-container p-4" *ngIf="!(job)">
-    <div class="alert alert-info p-2">
-        You do not have any jobs!
-    </div>
-    <div class="d-flex justify-content-center">
-        <a routerLink="/job/new_post"><button class="btn btn-primary pull-right"> Create Job </button></a>
-    </div>
-</div>
 
-<div class="row" *ngIf="job">
-
-    <div class="col-4">
-        <h1 class="text-light">Manage Job Postings</h1>
-    </div>
-    <div class="col-8">
-        <div class="alert alert-info" *ngIf="editForm.dirty">
-            <strong>Information: </strong> You have made changes. Any unsaved changes will be lost
+    <div class="row d-flex justify-content-center">
+        <div class="d-flex justify-content-center">
+            <h1 class="text-light">Manage Job Postings</h1>
         </div>
-    </div>
 
-    <div   class="col-2">
-        <div *ngFor="let job of jobs">
-            <div    class="card" >
-  
-                <div  class="card-body" >
-                    <div  class="d-flex flex-wrap px-3 justify-content-center">
-                        <div class="col-2" style="min-width: 187px;">
-                            <div class="p-2" (click)="loadJobFromCard(job.id)">
-                                <app-job-card [job]="job"></app-job-card>
-                            </div>
-                        </div>
-                      </div>
+        <div class="glass-container p-4" *ngIf="!(job)">
+            <div class="alert alert-info p-2">
+                You do not have any jobs!
+            </div>
+            <div class="d-flex justify-content-center">
+                <a routerLink="/job/new_post"><button class="btn btn-primary pull-right"> Create Job </button></a>
+            </div>
+        </div>
+
+
+        <div *ngIf="job" class="col-10 glass-container p-2">
+
+            <div class="d-flex">
+            <div class="p-2">
+                <div *ngFor="let job of jobs" class="d-flex flex-row flex-wrap px-3 justify-content-start" style="max-width: 300px;">
+                  <div class="p-2" (click)="loadJobFromCard(job.id)">
+                    <app-job-card [job]="job"></app-job-card>
+                  </div>
                 </div>
-            </div>
-        </div>
-        <div class="d-flex justify-content-center" *ngIf="pagination">
-            <pagination 
-              [boundaryLinks]="true" 
-              [totalItems]="pagination.totalItems"
-              [itemsPerPage]="pagination.itemsPerPage"
-              [(ngModel)]="pagination.currentPage"
-              (pageChanged)="pageChanged($event)"
-              previousText="&lsaquo;" 
-              nextText="&rsaquo;" 
-              firstText="&laquo;" 
-              lastText="&raquo;">
-            </pagination>
-          </div>
-    </div>
-        
+                <div class="d-flex justify-content-center" *ngIf="pagination">
+                  <pagination 
+                    [boundaryLinks]="true" 
+                    [totalItems]="pagination.totalItems"
+                    [itemsPerPage]="pagination.itemsPerPage"
+                    [(ngModel)]="pagination.currentPage"
+                    (pageChanged)="pageChanged($event)"
+                    previousText="&lsaquo;" 
+                    nextText="&rsaquo;" 
+                    firstText="&laquo;" 
+                    lastText="&raquo;">
+                  </pagination>
+                </div>
+              </div>
+              <div class="p-2">
+                <div class="col-8">
+                    <div class="alert alert-info" *ngIf="editForm.dirty">
+                        <strong>Information: </strong> You have made changes. Any unsaved changes will be lost
+                    </div>
+                </div>
+              
 
-    <div class="col-10 glass-container p-2">
-
-        <form #editForm="ngForm" id="editForm" class="container" (ngSubmit)="UpdateJob(editForm.value)">
-            <div class="form-inline">
-                <h4>Job Title: </h4>
-                <input [(ngModel)]="job.title" type="text" ngModel name="title" class="form-control corner" >
-            </div>
-           
-            <div class="form-inline">
-                <h4>Orginazition Name: </h4>
-                <input [(ngModel)]="job.orgId" type="text" ngModel name="orgId" class="form-control corner" >
-            </div>
-            
-            <div class="form-inline">
-                <h4>City: </h4>
-                <input [(ngModel)]="job.city" type="text" ngModel name="city" class="form-control corner" >
-            </div>
-            <div class="form-inline">
-                <h4>Province/State: </h4>
-                <input [(ngModel)]="job.provinceOrState" type="text" name="provinceOrState" class="form-control corner" >
-            </div>
-            <div class="form-inline">
-                <h4>country: </h4>
-                <input [(ngModel)]="job.country" type="text" name="country" class="form-control corner" >
-            </div>
-            <div class="form-inline">
-                <h4>Job Type: </h4>
-                <input [(ngModel)]="job.jobType" type="text" name="jobType" class="form-control corner" >
-            </div>
-            
-            <div class="form-inline">
-                <h4>Salary: </h4>
-                <input [(ngModel)]="job.salary" type="text" name="salary" class="form-control corner">
-            </div>
-            <div class="form-inline">
-                <h4>DeadLine: </h4>
-                <input [(ngModel)]="job.deadline" type="date" name="deadline" class="form-control corner" >
-            </div>
-            
-            <h4>Musical genres we work with</h4>
-            <p>Please list The relevant genres separated by a comma with no space </p>
-            <input [(ngModel)]="job.genres" type="text" name="genres" class="form-control corner" >
-
-           
-            <h4>Job Description</h4>
-            <textarea [(ngModel)]="job.description" type="text" name="description" class="form-control"></textarea>
-            
-            <h4>Desired Skills</h4>
-            <p>Please list The desired skills Separated by a comma with no space </p>
-            <input [(ngModel)]="job.skillsRequired" type="text" name="skillsRequired" class="form-control corner" >
-            
-            <h4>Logo</h4>
-            <input type="file" id="myLogo" name="logo">
-            
-            <div class="col-md-12 text-right">
-                <button type="button" class="btn btn-success" (click)="UpdateJob(job)" >Save</button>
-                <!--Once conneted with backend Make sure to uncomment the delete button-->
-                <!--<button type="button" class="btn btn-danger" (click)="DeleteJob(job.id)">Delete</button>-->
-            </div>
-            
-            
-        </form>
+                
 
 
+
+                <form #editForm="ngForm" id="editForm" class="container" (ngSubmit)="UpdateJob(editForm.value)">
+                    <div class="form-inline">
+                        <h4>Job Title: </h4>
+                        <input [(ngModel)]="job.title" type="text" ngModel name="title" class="form-control corner" >
+                    </div>
+                
+                    <div class="form-inline">
+                        <h4>Orginazition Name: </h4>
+                        <input [(ngModel)]="job.orgId" type="text" ngModel name="orgId" class="form-control corner" >
+                    </div>
+                    
+                    <div class="form-inline">
+                        <h4>City: </h4>
+                        <input [(ngModel)]="job.city" type="text" ngModel name="city" class="form-control corner" >
+                    </div>
+                    <div class="form-inline">
+                        <h4>Province/State: </h4>
+                        <input [(ngModel)]="job.provinceOrState" type="text" name="provinceOrState" class="form-control corner" >
+                    </div>
+                    <div class="form-inline">
+                        <h4>country: </h4>
+                        <input [(ngModel)]="job.country" type="text" name="country" class="form-control corner" >
+                    </div>
+                    <div class="form-inline">
+                        <h4>Job Type: </h4>
+                        <input [(ngModel)]="job.jobType" type="text" name="jobType" class="form-control corner" >
+                    </div>
+                    
+                    <div class="form-inline">
+                        <h4>Salary: </h4>
+                        <input [(ngModel)]="job.salary" type="text" name="salary" class="form-control corner">
+                    </div>
+                    <div class="form-inline">
+                        <h4>DeadLine: </h4>
+                        <input [(ngModel)]="job.deadline" type="date" name="deadline" class="form-control corner" >
+                    </div>
+                    
+                    <h4>Musical genres we work with</h4>
+                    <p>Please list The relevant genres separated by a comma with no space </p>
+                    <input [(ngModel)]="job.genres" type="text" name="genres" class="form-control corner" >
+
+                
+                    <h4>Job Description</h4>
+                    <textarea [(ngModel)]="job.description" type="text" name="description" class="form-control"></textarea>
+                    
+                    <h4>Desired Skills</h4>
+                    <p>Please list The desired skills Separated by a comma with no space </p>
+                    <input [(ngModel)]="job.skillsRequired" type="text" name="skillsRequired" class="form-control corner" >
+                    
+                    <h4>Logo</h4>
+                    <input type="file" id="myLogo" name="logo">
+                    
+                    <div class="col-md-12 text-right">
+                        <button type="button" class="btn btn-success" (click)="UpdateJob(job)" >Save</button>
+                        <!--Once conneted with backend Make sure to uncomment the delete button-->
+                        <!--<button type="button" class="btn btn-danger" (click)="DeleteJob(job.id)">Delete</button>-->
+                    </div>
+                    
+                    
+                </form>
+            </div>
+            </div>
     </div>
 </div>
+

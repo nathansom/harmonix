@@ -31,7 +31,9 @@ export class JobRegisterComponent implements OnInit {
       title: ['', Validators.required],
       confirmedOrgId: [''],
       // ! Let's remove logoUrl from this. Let's use OrgPhoto instead (already set by the backend)
-      logoUrl: ['', Validators.required],
+
+      logoUrl: [],
+
       description: ['', Validators.required],
       salary: [''],
       city: ['', Validators.required],

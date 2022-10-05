@@ -4,7 +4,7 @@
         (ngSubmit)="registerForm.valid && register()"
         [formGroup]="registerForm"
         autocomplete="off"
-        class="card p-3"
+        class="card glass-container p-3"
       >
         <h2 class="text-center text-primary">Post New job</h2>
         <hr />
@@ -19,11 +19,8 @@
             [type]='"number"'
           ></app-text-input>
           <!-- Let's remove the job logo upload. LinkedIn uses company logo and Indeed got none -->
-          <app-text-input
-            [formControl]="$any(registerForm.controls['logoUrl'])"
-            [label]="'URL for job Logo'"
-          ></app-text-input>
           <!-- End of Deprecated Element -->
+          
           <app-text-input
             [formControl]="$any(registerForm.controls['description'])"
             [label]="'Job Description'"
@@ -33,23 +30,27 @@
             [label]="'salary'"
             [type]='"number"'
           ></app-text-input>
-          <app-text-input
+          <h4 class="text-primary">Location Details:</h4>
+          <div class="form-inline justify-content-center p-4">
+          <app-text-input class="pl-1"
             [formControl]="$any(registerForm.controls['city'])"
             [label]="'city'"
           ></app-text-input>
-          <app-text-input
+          <app-text-input class="pl-1"
             [formControl]="$any(registerForm.controls['provinceOrState'])"
             [label]="'province'"
           ></app-text-input>
-          <app-text-input
+          
+          <app-text-input class="pl-1"
             [formControl]="$any(registerForm.controls['country'])"
             [label]="'country'"
           ></app-text-input>
+          </div>
           <app-text-input
             [formControl]="$any(registerForm.controls['genres'])"
             [label]="'genres'"
           ></app-text-input>
-          <app-text-input
+          <app-text-input 
             [formControl]="$any(registerForm.controls['jobType'])"
             [label]="'jobType'"
           ></app-text-input>

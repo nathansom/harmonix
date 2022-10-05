@@ -83,10 +83,10 @@ import { PricingComponent } from './pricing/pricing.component';
     JobRegisterComponent,
     OrganizationRegisterComponent,
     MultiselectComponent,
-    LearnMoreComponent,
-    PricingComponent,
     JobSavedComponent,
-    OrgLikedComponent
+    OrgLikedComponent,
+    LearnMoreComponent,
+    PricingComponent
   ],
   imports: [
     BrowserModule,

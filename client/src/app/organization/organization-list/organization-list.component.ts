@@ -27,6 +27,7 @@ export class OrganizationListComponent implements OnInit {
   pagination: Pagination;
   postedByUser: Boolean;
   orgParams: OrgParams;
+  postedloded: boolean = false;
 
   genderList = GENDER_LIST;
 
@@ -60,14 +61,23 @@ export class OrganizationListComponent implements OnInit {
   }
 
   loadOrganizationsByUserId(id: number){
-    console.log(id);
-    this.orgsService.setOrgParams(this.orgParams);
-    this.orgsService.getOrgByPosterId(id, this.orgParams).subscribe((response) => {
-      this.orgs = response.result;
-      this.pagination = response.pagination;
-    });
-    console.log("userOrgs");
-    console.log(this.orgs);
+
+
+    if( this.postedloded == false)
+    {    
+      this.orgsService.setOrgParams(this.orgParams);
+      this.orgsService.getOrgByPosterId(id, this.orgParams).subscribe((response) => {
+        this.orgs = response.result;
+        this.pagination = response.pagination;
+      });
+      this.postedloded = true;
+    }
+
+    else{
+      this.resetFilters();
+      this.postedloded = false;
+    }
+
   }
 
 

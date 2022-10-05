@@ -1,15 +1,10 @@
 
 <div class="container bg-light my-3 pt-3 rounded" >
   <div class="row ">
-    <div class="col justify-content-right">
+    <div class="col text-center">
       <div class="btn-group">
-        <a routerLink="/organization/register"><button class="btn btn-primary pull-right" > Post Organization</button></a>
-        <button *ngIf="this.member"
-        type="button"
-        class="btn btn-primary" 
-        name="orderBy" 
-        (click)="loadOrganizationsByUserId(this.member.id)"
-        btnRadio="created">Posted by me</button>
+        <button class="btn btn-primary" routerLink="/organization/register"> Post Organization</button>
+        <button *ngIf="this.member" class="btn btn-primary" (click)="loadOrganizationsByUserId(this.member.id)">Posted by me</button>
       </div>
     </div>
 
@@ -17,7 +12,7 @@
   
   <div class="row">
     <div class="col text-center">
-      <p>{{orgs?.length}} results found</p>
+      <p>{{ pagination?.totalItems }} results found</p>
     </div>
 
     

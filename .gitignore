@@ -458,6 +458,8 @@ appsettings.json
 harmonix.db
 harmonix.db.shm
 harmonix.db.wal
+
 API/harmonix.db-shm
 API/harmonix.db-wal
+API/harmonix.db~Stashed changes
 

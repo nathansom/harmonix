@@ -1,5 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary px-2">
   <div class="container">
+    <img src="{{'./assets/logo.svg'}}" alt="icon" style="width: 50px; height: 50px; margin-right: 2px">
     <a class="navbar-brand" routerLink="/">Harmonix</a>
     <button type="button" class="navbar-toggler collapsed" (click)="isCollapsed = !isCollapsed"
         [attr.aria-expanded]="!isCollapsed" aria-controls="navbarCollapse" aria-label="Toggle navigation">
@@ -18,9 +19,6 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/organizations" routerLinkActive="active">Organizations</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" routerLink="/learn-more" routerLinkActive="active">Learn More</a>
-          </li>
         <div class="dropdown" dropdown>
           <li class="dropdown-toggle nav-item" dropdownToggle>
             <a>My Network</a>
