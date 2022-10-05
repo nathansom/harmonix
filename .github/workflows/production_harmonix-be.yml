@@ -1,5 +1,5 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions 
+# More GitHub Actions for Azure: https://github.com/Azure/actions
 
 name: Build and deploy ASP.Net Core app to Azure Web App - HARMONIX-BE
 
@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'HARMONIX-BE'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F8A80F25DFA4E79BF70E3F4E457EE14 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C7B149EA74C84D6E89652DF0FB4ACEB3 }}
           package: .

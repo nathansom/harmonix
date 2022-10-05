@@ -1,1 +1,2 @@
 Please don't forget to redo migrations eveythime you modify the entities.
+Be courageous and communicate.
