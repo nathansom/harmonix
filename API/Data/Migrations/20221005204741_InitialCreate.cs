@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace API.Data.Migrations
 {
-    public partial class InitialPostgresstableconstruction : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,8 @@ namespace API.Data.Migrations
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     DateOfBirth = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
                     KnownAs = table.Column<string>(type: "text", nullable: true),
                     Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     LastActive = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
@@ -39,7 +41,11 @@ namespace API.Data.Migrations
                     Introduction = table.Column<string>(type: "text", nullable: true),
                     LookingFor = table.Column<string>(type: "text", nullable: true),
                     Interests = table.Column<string>(type: "text", nullable: true),
+                    Occupation = table.Column<string>(type: "text", nullable: true),
+                    Skills = table.Column<string>(type: "text", nullable: true),
+                    Genres = table.Column<string>(type: "text", nullable: true),
                     City = table.Column<string>(type: "text", nullable: true),
+                    ProvinceOrState = table.Column<string>(type: "text", nullable: true),
                     Country = table.Column<string>(type: "text", nullable: true),
                     UserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -70,6 +76,28 @@ namespace API.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Groups", x => x.Name);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Organizations",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "text", nullable: true),
+                    OrgType = table.Column<string>(type: "text", nullable: true),
+                    Introduction = table.Column<string>(type: "text", nullable: true),
+                    Established = table.Column<int>(type: "integer", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    ProvinceOrState = table.Column<string>(type: "text", nullable: true),
+                    Country = table.Column<string>(type: "text", nullable: true),
+                    OwnerId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Organizations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -276,6 +304,143 @@ namespace API.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "AppUserOrganization",
+                columns: table => new
+                {
+                    AffiliationId = table.Column<int>(type: "integer", nullable: false),
+                    MembersId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AppUserOrganization", x => new { x.AffiliationId, x.MembersId });
+                    table.ForeignKey(
+                        name: "FK_AppUserOrganization_AspNetUsers_MembersId",
+                        column: x => x.MembersId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_AppUserOrganization_Organizations_AffiliationId",
+                        column: x => x.AffiliationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Jobs",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Title = table.Column<string>(type: "text", nullable: true),
+                    ConfirmedOrgId = table.Column<int>(type: "integer", nullable: false),
+                    OrganizationId = table.Column<int>(type: "integer", nullable: true),
+                    JobPosterId = table.Column<int>(type: "integer", nullable: true),
+                    Description = table.Column<string>(type: "text", nullable: true),
+                    Salary = table.Column<int>(type: "integer", nullable: false),
+                    City = table.Column<string>(type: "text", nullable: true),
+                    ProvinceOrState = table.Column<string>(type: "text", nullable: true),
+                    Country = table.Column<string>(type: "text", nullable: true),
+                    Genres = table.Column<string>(type: "text", nullable: true),
+                    JobType = table.Column<string>(type: "text", nullable: true),
+                    SkillsRequired = table.Column<string>(type: "text", nullable: true),
+                    ApplicationUrl = table.Column<string>(type: "text", nullable: true),
+                    DateCreated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Deadline = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    LastUpdated = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Jobs", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Jobs_AspNetUsers_JobPosterId",
+                        column: x => x.JobPosterId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Jobs_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrgLikes",
+                columns: table => new
+                {
+                    OrgId = table.Column<int>(type: "integer", nullable: false),
+                    LikedUserId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrgLikes", x => new { x.OrgId, x.LikedUserId });
+                    table.ForeignKey(
+                        name: "FK_OrgLikes_AspNetUsers_LikedUserId",
+                        column: x => x.LikedUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_OrgLikes_Organizations_OrgId",
+                        column: x => x.OrgId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "OrgPhotos",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Url = table.Column<string>(type: "text", nullable: true),
+                    IsMain = table.Column<bool>(type: "boolean", nullable: false),
+                    PublicId = table.Column<string>(type: "text", nullable: true),
+                    OrganizationId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_OrgPhotos", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_OrgPhotos_Organizations_OrganizationId",
+                        column: x => x.OrganizationId,
+                        principalTable: "Organizations",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "SavedJobs",
+                columns: table => new
+                {
+                    JobId = table.Column<int>(type: "integer", nullable: false),
+                    SavedUserId = table.Column<int>(type: "integer", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_SavedJobs", x => new { x.JobId, x.SavedUserId });
+                    table.ForeignKey(
+                        name: "FK_SavedJobs_AspNetUsers_SavedUserId",
+                        column: x => x.SavedUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_SavedJobs_Jobs_JobId",
+                        column: x => x.JobId,
+                        principalTable: "Jobs",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_AppUserOrganization_MembersId",
+                table: "AppUserOrganization",
+                column: "MembersId");
+
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
                 table: "AspNetRoleClaims",
@@ -319,6 +484,16 @@ namespace API.Data.Migrations
                 column: "GroupName");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Jobs_JobPosterId",
+                table: "Jobs",
+                column: "JobPosterId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Jobs_OrganizationId",
+                table: "Jobs",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Likes_LikedUserId",
                 table: "Likes",
                 column: "LikedUserId");
@@ -334,13 +509,31 @@ namespace API.Data.Migrations
                 column: "SenderId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_OrgLikes_LikedUserId",
+                table: "OrgLikes",
+                column: "LikedUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_OrgPhotos_OrganizationId",
+                table: "OrgPhotos",
+                column: "OrganizationId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Photos_AppUserId",
                 table: "Photos",
                 column: "AppUserId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_SavedJobs_SavedUserId",
+                table: "SavedJobs",
+                column: "SavedUserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "AppUserOrganization");
+
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");
 
@@ -366,7 +559,16 @@ namespace API.Data.Migrations
                 name: "Messages");
 
             migrationBuilder.DropTable(
+                name: "OrgLikes");
+
+            migrationBuilder.DropTable(
+                name: "OrgPhotos");
+
+            migrationBuilder.DropTable(
                 name: "Photos");
+
+            migrationBuilder.DropTable(
+                name: "SavedJobs");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -375,7 +577,13 @@ namespace API.Data.Migrations
                 name: "Groups");
 
             migrationBuilder.DropTable(
+                name: "Jobs");
+
+            migrationBuilder.DropTable(
                 name: "AspNetUsers");
+
+            migrationBuilder.DropTable(
+                name: "Organizations");
         }
     }
 }
