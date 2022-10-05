@@ -66,6 +66,9 @@ namespace API.Controllers
         [HttpGet("{id}/users")]
         public async Task<ActionResult<IEnumerable<OrgMemberDto>>> GetMembersByOrganizationId([FromQuery] UserParams userParams, int id)
         {
+            var org = await _organizationRepository.GetOrganizationByIdAsync(id);
+            if (org == null) return NotFound("Organization not found");
+
             var members = await _organizationRepository.GetMembersByOrganizationIdAsync(userParams, id);
 
             Response.AddPaginationHeader(members.CurrentPage, members.PageSize,
@@ -77,8 +80,10 @@ namespace API.Controllers
         [HttpGet("{id}/jobs")]
         public async Task<ActionResult<IEnumerable<JobDto>>> GetJobsByOrganizationId([FromQuery] JobParams jobParams, int id)
         {
-            var jobs = await _organizationRepository.GetJobsByOrganizationIdAsync(jobParams, id);
+            var org = await _organizationRepository.GetOrganizationByIdAsync(id);
+            if (org == null) return NotFound("Organization not found");
 
+            var jobs = await _organizationRepository.GetJobsByOrganizationIdAsync(jobParams, id);
             // if (jobs == null) return Ok(new PagedList<object>(new object[0],0,1,1));
 
             Response.AddPaginationHeader(jobs.CurrentPage, jobs.PageSize,

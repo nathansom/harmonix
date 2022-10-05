@@ -132,6 +132,21 @@ namespace API.Helpers
                     src.LikedUser.Country))
                 .ForMember(dest => dest.LikedUserPhotoUrl, opt => opt.MapFrom(src =>
                     src.LikedUser.Photos.FirstOrDefault(x => x.IsMain).Url));
+
+            CreateMap<Organization, OrgLikeDto>()
+            .ForMember(dest => dest.Organization, opt => opt.MapFrom(src =>
+                    src.Name))
+                .ForMember(dest => dest.Introduction, opt => opt.MapFrom(src =>
+                    src.Introduction))
+                .ForMember(dest => dest.OrganizationPhotoUrl, opt => opt.MapFrom(src =>
+                    src.Photos.FirstOrDefault(x => x.IsMain).Url))
+                .ForMember(dest => dest.OrganizationCity, opt => opt.MapFrom(src =>
+                    src.City))
+                .ForMember(dest => dest.OrganizationState, opt => opt.MapFrom(src =>
+                    src.ProvinceOrState))
+                .ForMember(dest => dest.OrganizationCountry, opt => opt.MapFrom(src =>
+                    src.Country));
+            ;
         }
     }
 }

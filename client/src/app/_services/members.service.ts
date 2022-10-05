@@ -41,9 +41,7 @@ export class MembersService {
             this.getMember(user.username).subscribe(member =>{
                 this.currMem = member;
             });
-        })
-
-        
+        })        
     }
 
     getMembers(userParams: UserParams) {
@@ -54,9 +52,12 @@ export class MembersService {
 
         let params = getPaginationHeaders(userParams.pageNumber, userParams.pageSize);
 
-        params = params.append('minAge', userParams.minAge.toString());
-        params = params.append('maxAge', userParams.maxAge.toString());
-        params = params.append('gender', userParams.gender);
+        params = params.append('city', userParams.city);
+        params = params.append('provinceOrState', userParams.provinceOrState);
+        params = params.append('country', userParams.country);
+        params = params.append('occupation', userParams.occupation);
+        params = params.append('skill', userParams.skill);
+        params = params.append('genre', userParams.genre);
         params = params.append('orderBy', userParams.orderBy);
 
         return getPaginatedResult<Member[]>(this.baseUrl + 'users', params, this.http)

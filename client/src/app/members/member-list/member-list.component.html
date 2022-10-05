@@ -1,29 +1,29 @@
 <div class="container mt-3 bg-light my-3 pt-3 rounded">
   <form #form="ngForm" class="form-inline mb-3" (ngSubmit)="loadMembers()" autocomplete="off">
-    <div class="form-group">
-      <label class="text-primary">Age from: </label>
-      <input type="number" class="form-control ml-1" style="width: 5.5rem;" 
-        name="minAge" [(ngModel)]="userParams.minAge">
-    </div>
+    
     <div class="form-group px-2">
-      <label class="text-primary">Age from: </label>
-      <input type="number" class="form-control ml-1" style="width: 5.5rem;" 
-        name="maxAge" [(ngModel)]="userParams.maxAge">
+        <div class="col">
+            <div class="row mb-2">
+                <input class="form-control mr-2" [(ngModel)]="userParams.skill" name="skill"  placeholder="Skill">
+                <input class="form-control mr-2" [(ngModel)]="userParams.genre" name="genre"  placeholder="Genre">
+                <input class="form-control mr-2" [(ngModel)]="userParams.provinceOrState" name="provinceOrState"  placeholder="Province">
+            </div>
+            <div class="row">
+                <input class="form-control mr-2" [(ngModel)]="userParams.occupation" name="occupation"  placeholder="Occupation">
+                <input class="form-control mr-2" [(ngModel)]="userParams.country" name="country"  placeholder="Country">
+                <input class="form-control mr-2" [(ngModel)]="userParams.city" name="city"  placeholder="City">
+                
+            </div>
+        </div>
     </div>
-    <div class="form-group px-2">
-      <label class="text-primary">Show: </label>
-      <select name="gender" style="width: 5.5rem;" [(ngModel)]="userParams.gender" class="form-control ml-1">
-        <option *ngFor="let gender of genderList" [value]="gender.item_text.toLowerCase()">
-          {{gender.item_text}}
-        </option>
-      </select>
-    </div>
+
 
     <button class="btn btn-primary ml-1" type="submit">Apply Filters</button>
     <button (click)="resetFilters()" class="btn btn-info ml-1" type="submit">Reset Filters</button>
 
+
     <div class="col">
-      <div class="btn-group float-right">
+      <div class="row btn-group float-right">
         <button 
           type="button"
           class="btn btn-primary" 

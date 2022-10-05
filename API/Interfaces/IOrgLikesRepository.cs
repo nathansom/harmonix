@@ -9,7 +9,10 @@ namespace API.Interfaces
     {
         Task<OrgLike> GetOrganizationLike(int OrgId, int likedUserId);
         Task<Organization> GetOrganizationWithLikes(int orgId);
-
-        Task<IEnumerable<OrgLikeDto>> GetOrganizationLikes( int orgId);
+        Task<IEnumerable<OrgLikeDto>> GetOrganizationLikesByOrgId(int orgId);
+        Task<PagedList<OrganizationDto>> GetLikedOrganizations(OrgLikeParams orgLikeParams);
+        Task<PagedList<MemberDto>> GetLikedByUsers(OrgLikeParams orgLikeParams, int orgId);
+        Task<bool> SaveAllAsync();
+        bool UnlikeOrganization(int orgId, int userId);
     }
 }

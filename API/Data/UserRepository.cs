@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using API.DTOs;
 using API.Entities;
 using API.Helpers;
@@ -32,8 +33,8 @@ namespace API.Data
             var query = _context.Users.AsQueryable();
             query = query.Where(u => u.UserName != userParams.CurrentUsername);
 
-            if (userParams.Occupation != null)
-                query = query.Where(u => u.Occupation.ToLower().Trim().Contains(userParams.Occupation.ToLower().Trim()));
+            if (userParams.Occupation != null)            
+                query = query.Where(u => u.Occupation.ToLower().Trim().Contains(userParams.Occupation.ToLower().Trim()));                                    
             if (userParams.Skill != null)
                 query = query.Where(u => u.Skills.ToLower().Trim().Contains(userParams.Skill.ToLower().Trim()));
             if (userParams.Genre != null)
@@ -44,13 +45,6 @@ namespace API.Data
                 query = query.Where(u => u.ProvinceOrState.ToLower().Trim().Contains(userParams.ProvinceOrState.ToLower().Trim()));
             if (userParams.Country != null)
                 query = query.Where(u => u.Country.ToLower().Trim().Contains(userParams.Country.ToLower().Trim()));
-
-            query = query.Where(u => u.Gender == userParams.Gender); // Delete this when ready
-
-            var minDob = DateTime.Today.AddYears(-userParams.MaxAge - 1); // Not really needed
-            var maxDob = DateTime.Today.AddYears(-userParams.MinAge); // Not really needed
-
-            query = query.Where(u => u.DateOfBirth >= minDob && u.DateOfBirth <= maxDob); // Not really needed
 
             query = userParams.OrderBy switch
             {
