@@ -6,7 +6,7 @@ name: Build and deploy ASP.Net Core app to Azure Web App - HARMONIX-BE
 on:
   push:
     branches:
-      - CAP_24_A_DB_TV
+      - PRODUCTION
     paths:
       - 'API/**'
   workflow_dispatch:
