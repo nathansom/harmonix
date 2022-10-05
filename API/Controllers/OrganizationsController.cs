@@ -157,11 +157,14 @@ namespace API.Controllers
             return BadRequest("Failed to update organization");
         }
 
-        [HttpPost("add-photo")]
+        [HttpPost("add-photo/{id}")]
         public async Task<ActionResult<OrgPhotoDto>> AddPhoto(IFormFile file, int id)
         {
-            var user = _userRepository.GetUserByUsernameAsync(User.GetUsername());
+            var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
             var organization = await _organizationRepository.GetOrganizationByIdAsync(id);
+            if(organization == null){
+                return BadRequest("Organization is null");
+            }
             if (organization.OwnerId != user.Id) return BadRequest("You cannot add photo to this organization!");
             var result = await _photoService.AddPhotoAsync(file);
 
@@ -185,7 +188,7 @@ namespace API.Controllers
             return BadRequest("Problem addding photo");
         }
 
-        [HttpPut("set-main-photo/{photoId}")]
+        [HttpPut("{id}/set-main-photo/{photoId}")]
         public async Task<ActionResult> SetMainPhoto(int photoId, int id)
         {
             var user = _userRepository.GetUserByUsernameAsync(User.GetUsername());

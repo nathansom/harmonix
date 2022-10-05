@@ -10,6 +10,7 @@ import { OrgParams } from '../_models/orgParams';
 
 import { getPaginationHeaders, getPaginatedResult } from './paginationHelper';
 import { AccountService } from './account.service';
+import { orgLike } from '../_models/orgLike';
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,7 @@ export class OrganizationsService {
 
         return getPaginatedResult<Member[]>(this.baseUrl + 'organizations', params, this.http)
             .pipe(map(response => {
-                this.organizationCache.set(Object.values(orgParams).join('-'), response);
+                //this.organizationCache.set(Object.values(orgParams).join('-'), response);
                 return response;
             }));
     }
@@ -90,8 +91,8 @@ export class OrganizationsService {
         );
     }
 
-    setMainPhoto(photoId: number) {
-        return this.http.put(this.baseUrl + 'organizations/set-main-photo/' + photoId, {});
+    setMainPhoto(photoId: number, orgId: number) {
+        return this.http.put(this.baseUrl + 'organizations/'+ orgId + '/set-main-photo/' + photoId, {});
     }
 
     deletePhoto(photoId: number) {
@@ -102,10 +103,12 @@ export class OrganizationsService {
         return this.http.post(this.baseUrl + 'orglikes/' + orgId, {});
     }
 
-    getLikes(predicate: string, pageNumber, pageSize) {
+    getLikes(pageNumber, pageSize) {
         let params = getPaginationHeaders(pageNumber, pageSize);
-        params = params.append('predicate', predicate);
-        return getPaginatedResult<Partial<Organization[]>>(this.baseUrl + 'orgLikes', params, this.http);
+
+        //params = params.append('predicate', predicate);
+        return getPaginatedResult<Partial<Organization[]>>(this.baseUrl + 'orgLikes/liked', params, this.http);
+
     }
 
     //Add new organization
@@ -115,6 +118,18 @@ export class OrganizationsService {
     }
 
     //Add Member
+    getMembers(id, pageNumber, pageSize) {
+
+
+        let params = getPaginationHeaders(pageNumber, pageSize);
+
+
+
+        return getPaginatedResult<Member[]>(this.baseUrl + 'organizations/'+id+'/users', params, this.http)
+            .pipe(map(response => {
+                return response;
+            }));
+    }
 
     
 }

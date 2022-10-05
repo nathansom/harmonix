@@ -8,6 +8,12 @@
             <li class="list-inline-item"><button (click)="addLike(org)" class="btn btn-primary">
                     <i class="fa fa-plus"></i></button></li>
             <!--
+            <li *ngIf="memberService.currMem && !jobalreadyliked()" class="list-inline-item"><button (click)="addLike(job)" class="btn btn-success">
+                        <i class="fa fa-plus"></i></button></li>
+                
+            <li *ngIf="memberService.currMem && jobalreadyliked()" class="list-inline-item"><button (click)="removeSaveJob(job)" class="btn btn-danger">
+                        <i class="fa fa-minus"></i></button></li>
+            
             <li class="list-inline-item">
                 <button routerLink="/members/{{job.title}}" [queryParams]="{tab: 3}" class="btn btn-primary">
                     <i class="fa fa-envelope"></i>
@@ -18,11 +24,8 @@
     </div>
     <div class="card-body p-1">
         <h6 class="card-title text-center mb-1">
-            <span [class.is-online]="(presence.onlineUsers$ | async).includes(org.name)">
-                <i class="fa fa-user mr-2"></i>
-            </span>
-            {{org.established}}
+            {{org.name}}
         </h6>
-        <p class="card-text text-muted text-center">{{org.introduction}}</p>
+        <p class="card-text text-muted text-center">{{org.country}}</p>
     </div>
 </div>

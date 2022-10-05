@@ -1,8 +1,8 @@
-<!--<div class="text-center mt-3">
-    <h2 class="text-light">Saved jobs</h2>
+<div class="text-center mt-3">
+    <h2 class="text-light">Saved Organizations</h2>
 </div>
 
-<div class="row">
+<!--<div class="row">
     <div *ngFor="let job of jobs" class="col-2">
         <div class="card mb-4">
             <div class="card-img-wrapper">
@@ -25,14 +25,16 @@
             </div>
         </div>
      </div>
-</div>
+</div>-->
 
 <div class="container mt-3">
     <div class="row">
   
       <div class="d-flex flex-wrap mt-3 justify-content-center">
-        <div *ngFor="let job of jobs" class="col-2" style="min-width: 187px;">
-          <app-job-card [job]="job"></app-job-card>
+        <div *ngFor="let org of orgs" class="col-2" style="min-width: 187px;">
+
+          <app-organization-card [org]="org"></app-organization-card>
+
         </div>
       </div>
     </div>
@@ -52,4 +54,4 @@
       lastText="&raquo;"
     >
     </pagination>
-  </div>-->
+  </div>

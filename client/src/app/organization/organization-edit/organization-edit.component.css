@@ -1,3 +1,39 @@
 .round-textbox{
     border-radius: 25px;
 }
+.img-thumbnail {
+    margin: 25px;
+    width: 85%;
+    height: 85%;
+  }
+  
+
+  .card-body {
+    padding: 0 25px;
+  }
+  
+  .card-footer {
+    padding: 10px 15px;
+    background-color: #fff;
+    border-top: none;
+  }
+  
+  #toast-container > div {
+    opacity:1;
+  }
+  p{
+    color: black;
+  }
+  
+    label, input {
+        display: block;
+        margin-bottom: 20px;
+    }
+
+    .corner {
+    border-radius: 25px;
+    border: 2px solid rgb(0, 0, 0);
+    padding: 5px 10px;
+    width: 300px;
+
+    }

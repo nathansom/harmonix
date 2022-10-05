@@ -82,7 +82,7 @@
                 <h1>{{job.title}}</h1>
             </div>
             <div class="row">
-                <p class="mycol">{{job.orgId}} {{job.city}}, {{job.country}} <i>{{job.dateCreated | timeago}}</i></p>
+                <p class="mycol">{{job.city}}, {{job.country}} <i>{{job.dateCreated | timeago}}</i></p>
                 <p class="mycol">{{job.jobType}}</p>
                 <p class="mycol">${{job.salary}}</p>
                 <p *ngIf="memberService.currMem" class="mycol">
@@ -128,11 +128,20 @@
                                 <img src="{{member.photoUrl || './assets/user.png'}}" alt="{{member.username}}" class="rounded-circle img-thumbnail">
                             </div>
                             <div class="col">
-                                <p>{{member.username}}, {{member.knownAs}}</p>
+                                <h5>{{member.knownAs}}</h5>
                                 <div class="container pl-0">
                                     <div class="row">
                                         <div class="col">
-                                            <p>{{member.age}}</p>
+                                            <div class="row">
+                                                <p>{{member.provinceOrState}}, {{member.country}}</p>
+                                            </div>
+                                            <div class="row">
+                                                <i>Skills: <span class="badge bg-primary ml-1" *ngFor="let a of member.skills.split(',')" >{{a}}</span> </i>
+                                            </div>
+                                            <div class="row">
+                                                <i>Interests:<span class="badge bg-primary ml-1" *ngFor="let a of member.interests.split(',')" >{{a}}</span></i>
+                                            </div>
+
                                         </div>
                                         <div class="col">
                                             <button routerLink="/members/{{member.username}}" [queryParams]="{tab: 3}" class="btn btn-primary">Message</button>
@@ -158,10 +167,28 @@
                             <div class="container pl-0">
                                 <div class="row">
                                     <div class="col">
-                                        <p>{{org.name}}</p>
+
+                                        
+                                        <div class="row">
+                                            <h5>{{org.name}}</h5>
+                                        </div>
+
+                                        <div class="row">
+                                            <p class="mycol">Established: {{org.established}}</p>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <p class="mycol">Location: {{org.provinceOrState}}, {{org.country}}</p>
+                                        </div>
+                                        <div class="row">
+                                            <p class="mycol">About Us: {{org.introduction}}</p>
+                                        </div>
+       
+
+                                    
                                     </div>
-                                    <div class="col">
-                                        <button class="btn btn-primary">Like</button>
+                                    <div class="col align-middle">
+                                        <button (click)="addLikeOrg(org)" class="btn btn-primary">Like</button>
                                     </div>
                                 </div>
                             </div>
@@ -170,11 +197,6 @@
 
                 </div>
 
-                <div *ngIf="member" class="card p-2">
-                    <div class="card-body">
-                        <p>{{org.introduction}}</p>
-                    </div>
-            </div>
 
 
 

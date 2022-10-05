@@ -6,19 +6,23 @@
     <div class="col-8 glass-container p-2">
         <div class="container">
             <img src="{{organization.photoUrl || './assets/user.png'}}" alt="{{organization.name}}" class="card-img-top img-thumbnail rounded-circle">
-            <div class="form-inline">
-                <h4 class="mt-2">{{organization.name}}</h4>
-                <button class="btn btn-primary m-4" (click)="addLike(organization)" type="submit">Like<i class="fa fa-thumbs-up ml-2"></i></button>
-            </div>
-            <div class="form-inline">
-                <h5 class="mt-2 mr-8">{{organization.introduction}}</h5>
-                <h5 class="m-2">{{organization.established}}</h5>
-                <h5 class="m-2">Likes: {{organization.photoUrl}}</h5>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <h4 class="m-2">{{organization.name}}</h4>
+                    </div>
+                    <div class="col">
+                        <button class="btn btn-primary" (click)="addLike(organization)" type="submit">Like<i class="fa fa-thumbs-up ml-2"></i></button>
+
+                    </div>
+                </div>
             </div>
 
-            <h5 class="m-2">Organization ID: {{organization.id}}</h5>
+                <h5 class="m-2">Established: {{organization.established}}</h5>
+                <h5 class="m-2">Likes: {{organization.likes}}</h5>
+
             <h5 class="m-2">Members: {{organization.members.length}}</h5>
-            <h5 class="m-2">Established: {{organization.established}}</h5>
+
             
             <div style="margin-top: 42px;">
                 <h4>About us</h4>
@@ -35,18 +39,28 @@
                 </div>
             </div>
 
-            <div class="d-flex justify-content-end">
-                <button class="btn btn-success" style="width: 20%; font-size: 24px;">Join</button>
-            </div>
 
         </div>
     </div>
 
-    <div *ngIf="organization.members.length > 0" class="col-8 glass-container p-2 mt-4">
+    <div *ngIf="members && members.length > 0" class="col-8 glass-container p-2 mt-4">
         <div class="d-flex flex-wrap px-3 justify-content-center">
-            <div *ngFor="let member of organization.members" class="col-2" style="min-width: 187px;">
+            <div *ngFor="let member of members" class="col-2" style="min-width: 187px;">
               <app-member-card [member]="member"></app-member-card>
             </div>
         </div>
+        <div class="d-flex justify-content-center" *ngIf="pagination">
+            <pagination 
+              [boundaryLinks]="true" 
+              [totalItems]="pagination.totalItems"
+              [itemsPerPage]="pagination.itemsPerPage"
+              [(ngModel)]="pagination.currentPage"
+              (pageChanged)="pageChanged($event)"
+              previousText="&lsaquo;" 
+              nextText="&rsaquo;" 
+              firstText="&laquo;" 
+              lastText="&raquo;">
+            </pagination>
+          </div>
     </div>
   </div>

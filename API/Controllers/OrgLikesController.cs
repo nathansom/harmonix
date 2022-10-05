@@ -32,7 +32,7 @@ namespace API.Controllers
             if (user == null) return NotFound();
             var orgLike = await _orgLikesRepository.GetOrganizationLike(id, user.Id);
 
-            if (orgLike != null) return BadRequest("You already like this user");
+            if (orgLike != null) return BadRequest("You already like this organization");
 
             orgLike = new OrgLike
             {

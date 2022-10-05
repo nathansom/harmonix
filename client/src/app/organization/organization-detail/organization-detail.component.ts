@@ -6,6 +6,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { ToastrService } from 'ngx-toastr';
 import { Member } from 'src/app/_models/member';
 import { Organization } from 'src/app/_models/organization';
+import { OrgParams } from 'src/app/_models/orgParams';
 import { Pagination } from 'src/app/_models/pagination';
 import { UserParams } from 'src/app/_models/userParams';
 import { MembersService } from 'src/app/_services/members.service';
@@ -19,10 +20,14 @@ import { OrganizationsService } from 'src/app/_services/organizations.service';
 export class OrganizationDetailComponent implements OnInit {
   organization: Organization;
   member: Member;
+  members: Partial<Member[]>;
   galleryOptions: NgxGalleryOptions[];
   galleryImages: NgxGalleryImage[];
+  pagination: Pagination;
+  pageNumber = 1;
+  pageSize = 5;
 
-  constructor(private route: ActivatedRoute, private memberService: MembersService, private router: Router, private orgsService: OrganizationsService ) {
+  constructor(private route: ActivatedRoute, private memberService: MembersService, private router: Router, private orgsService: OrganizationsService, private toastr: ToastrService ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
    }
 
@@ -49,9 +54,20 @@ export class OrganizationDetailComponent implements OnInit {
         this.organization = org;
         this.galleryImages = this.getImages(org);
         //this.loadOrg(job.orgId);
-        //this.loadMember(job.jobPosterName)
+        this.loadMembers(org.id)
       }
     )
+  }
+
+  loadMembers(id)
+  {
+    this.orgsService.getMembers(id, this.pageNumber, this.pageSize).subscribe(
+        response => {
+          this.members = response.result;
+          this.pagination = response.pagination;
+      }
+    );
+
   }
 
   getImages(org: Organization): NgxGalleryImage[] {
@@ -67,12 +83,16 @@ export class OrganizationDetailComponent implements OnInit {
   }
 
 
-  addLike(organization: Organization) {
-    //this.toastr.success('You have liked ');
-    //add addLike method in organization service
-    // this.memberService.addLike(member.username).subscribe(() => {
-    //   this.toastr.success('You have liked ' + member.knownAs);
-    // })
+  addLike(org: Organization) {
+    this.orgsService.addLike(org.id).subscribe(() => {
+      this.toastr.success('You have liked ' + org.name);
+
+    })
+  }
+
+  pageChanged(event: any) {
+    this.pageNumber = event.page;
+    this.loadMembers(this.organization.id);
   }
 
 }

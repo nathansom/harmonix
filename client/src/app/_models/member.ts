@@ -21,24 +21,21 @@ export interface Member {
     photos: Photo[];
     createdJobs: Job[];
     savedJobs: Job[];
-    affiliation: Organization[]; // !Possible cycle detection -> delete when ready
+    affiliation: Affiliation[]; // !Possible cycle detection -> delete when ready
     // affiliation: Affiliation[]; 
     // Uncomment the line above when ready
     // Or if no codes depend on accessing nested organization objects 
     // within Member object
 
-    /*firstName: string;
+    firstName: string;
     lastName: string;
 
     email: string;
 
-   
-
-    provinceOrState: string;
 
     occupation: string;
-    skills: string[];
-    genres: string[];*/
+    skills: string;
+    genres: string;
 
    
     

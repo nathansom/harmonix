@@ -34,7 +34,7 @@ export class OrganizationEditComponent implements OnInit {
     this.accountService.currentUser$.pipe(take(1)).subscribe(user => this.user = user);
     this.memberService.getMember(this.user.username).subscribe((m) => {
       this.loadOrganizationsByUserId(m.id);
-      console.log(m);
+      
       this.member = m;
     });
    }
@@ -48,12 +48,12 @@ export class OrganizationEditComponent implements OnInit {
   }
 
   loadOrganizationsByUserId(id: number){
-    console.log(id);
     this.organizationService.setOrgParams(this.orgParams);
     this.organizationService.getOrgByPosterId(id, this.orgParams).subscribe((response) => {
       if(response?.result?.length>0){
         this.loadOrganization(response.result[0]);
       }
+      console.log(response.result);
       this.userOrgs = response.result;
       this.pagination = response.pagination;
     });

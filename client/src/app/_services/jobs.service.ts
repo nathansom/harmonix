@@ -44,7 +44,7 @@ export class JobsService {
     if (response) {
       return of(response);
     }
-
+  
     let params = getPaginationHeaders(jobsParams.pageNumber, jobsParams.pageSize);
 
     var regex = /^[a-zA-Z0-9 ]+$/g; //checks if the string is just empty spaces could be improved
