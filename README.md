@@ -17,7 +17,7 @@ Harmonix is where music makers find their partners in collaboration or where the
 
 &nbsp;  
 ## Installation
-There are no installation instructions at this time.  
+Please delete all existing migration files, delete the existing database file, and add new migrations
 &nbsp;  
 ## Usage
 The app is currently in development.  
