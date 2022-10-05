@@ -21,7 +21,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<DataContext>(options=>{
-                options.UseNpgsql(_config.GetConnectionString("DefaultConnection"));
+                options.UseNpgsql(_config.GetConnectionString("POSTGRESQLCONNSTR_DefaultConnection"));
             });
             services.AddApplicationServices(_config);
             services.AddControllers();
