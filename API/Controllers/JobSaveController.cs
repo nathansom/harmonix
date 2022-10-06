@@ -36,7 +36,7 @@ namespace API.Controllers
             var sourceUser = await _jobSaveRepository.GetUserWithSavedJobs(sourceUserId);
 
             // implement check - job poster cannot save their own posted job
-            if(sourceUserId==savedJob.JobPoster.Id) return BadRequest("You cannot save the Job you posted.");
+            if(sourceUserId==savedJob.JobPoster!.Id) return BadRequest("You cannot save the Job you posted.");
 
             var jobSaved = await _jobSaveRepository.GetSavedJob(sourceUserId, savedJob.Id);
 
@@ -51,7 +51,7 @@ namespace API.Controllers
                 
             };
 
-            sourceUser.SavedJobs.Add(jobSaved);
+            sourceUser.SavedJobs!.Add(jobSaved);
             if(await _userRepository.SaveAllAsync()) return Ok();
 
             return BadRequest("Failed to save Job.");
@@ -84,7 +84,7 @@ namespace API.Controllers
             if (jobSave == null) return BadRequest("You already removed this job");
 
             
-            sourceUser.SavedJobs.Remove(jobSave);
+            sourceUser.SavedJobs!.Remove(jobSave);
 
             if (await _jobRepository.SaveAllAsync())
             {

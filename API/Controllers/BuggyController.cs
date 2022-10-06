@@ -36,7 +36,7 @@ namespace API.Controllers
     {
       var thing = _context.Users.Find(-1);
 
-      var thingToReturn = thing.ToString();
+      var thingToReturn = thing != null ? thing.ToString() : "";
 
       return thingToReturn;
     }

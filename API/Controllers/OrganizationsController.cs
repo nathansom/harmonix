@@ -37,8 +37,8 @@ namespace API.Controllers
         public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetOrganizations([FromQuery] OrganizationParams organizationParams)
         {
             var userId = User.GetUserId();
-            var user = await _userRepository.GetUserByIdAsync(userId);
-            if (organizationParams.Country == null) organizationParams.Country = user.Country;
+            // var user = await _userRepository.GetUserByIdAsync(userId);
+            // if (organizationParams.Country == null) organizationParams.Country = user.Country!;
 
             var organizations = await _organizationRepository.GetCompactOrganizationsAsync(organizationParams);
 
@@ -97,7 +97,7 @@ namespace API.Controllers
         }
 
         [HttpGet("owned")]
-        public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetOwnedOrganizations([FromQuery] OrganizationParams organizationParams, string username = null)
+        public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetOwnedOrganizations([FromQuery] OrganizationParams organizationParams, string? username = null)
         {
             int id;
             
@@ -122,7 +122,7 @@ namespace API.Controllers
         }
 
         [HttpGet("affiliated")]
-        public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetAffiliatedOrganizations([FromQuery] OrganizationParams organizationParams, string username = null)
+        public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetAffiliatedOrganizations([FromQuery] OrganizationParams organizationParams, string? username = null)
         {
             int id;
 
@@ -179,7 +179,7 @@ namespace API.Controllers
                 PublicId = result.PublicId
             };
 
-            if (organization.Photos.Count == 0)
+            if (organization.Photos!.Count == 0)
             {
                 photo.IsMain = true;
             }
@@ -199,13 +199,13 @@ namespace API.Controllers
             var organization = await _organizationRepository.GetOrganizationByIdAsync(id);
             if (organization.OwnerId != user.Id) return BadRequest("You are not permitted to set main photo.");
 
-            var photo = organization.Photos.FirstOrDefault(x => x.Id == photoId);
+            var photo = organization.Photos!.FirstOrDefault(x => x.Id == photoId);
 
-            if (photo.IsMain) return BadRequest("This is already your main photo");
+            if (photo != null && photo.IsMain) return BadRequest("This is already your main photo");
 
-            var currentMain = organization.Photos.FirstOrDefault(x => x.IsMain);
+            var currentMain = organization.Photos!.FirstOrDefault(x => x.IsMain);
             if (currentMain != null) currentMain.IsMain = false;
-            photo.IsMain = true;
+            if (photo != null) photo.IsMain = true;
 
             if (await _organizationRepository.SaveAllAsync()) return NoContent();
 
@@ -240,7 +240,7 @@ namespace API.Controllers
                 if (thisOrg == null)
                     return BadRequest("Error associating the new organization with your account");
 
-                thisOrg.Members.Add(user);
+                thisOrg.Members!.Add(user);
 
                 if (!userRoles.Contains("OrgAdmin"))
                     await _userManager.AddToRoleAsync(user, "OrgAdmin");
@@ -273,7 +273,7 @@ namespace API.Controllers
             if (user == null) return NotFound("User not found by this username");
             user = _mapper.Map<AppUser>(user);
 
-            if (org.Members.Contains(user)) return BadRequest("This user is already a member of this organization.");
+            if (org.Members!.Contains(user)) return BadRequest("This user is already a member of this organization.");
 
             // Private feature
             // var owner = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
@@ -307,7 +307,7 @@ namespace API.Controllers
         {
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
             var organization = await _organizationRepository.GetOrganizationByIdAsync(id);
-            var photo = organization.Photos.FirstOrDefault(x => x.Id == photoId);
+            var photo = organization.Photos!.FirstOrDefault(x => x.Id == photoId);
 
             if (photo == null) return NotFound();
 
@@ -325,7 +325,7 @@ namespace API.Controllers
                 return BadRequest("Failed delete photo. You are not the owner. Nice try ;)");
             }
 
-            organization.Photos.Remove(photo);
+            organization.Photos!.Remove(photo);
 
             if (await _userRepository.SaveAllAsync()) return Ok();
 

@@ -56,27 +56,27 @@ namespace API.Data
 
         public static async Task SeedJobs(DataContext context)
         {
-            if( await context.Jobs.AnyAsync()) return;
+            if( await context.Jobs!.AnyAsync()) return;
 
             var jobData = await System.IO.File.ReadAllTextAsync("Data/JobSeedDataUpdated.json");
             var jobs = JsonSerializer.Deserialize<List<Job>>(jobData);
-            foreach(var job in jobs)
+            foreach(var job in jobs!)
             {
-                context.Jobs.Add(job);
+                context.Jobs!.Add(job);
             }
             await context.SaveChangesAsync();
         }
 
         public static async Task SeedOrganizations(DataContext context)
         {
-            if (await context.Organizations.AnyAsync())return; 
+            if (await context.Organizations!.AnyAsync())return; 
 
             var OrganizationData = await System.IO.File.ReadAllTextAsync("Data/OrgnizationSeedData.json");
             var organizations = JsonSerializer.Deserialize<List<Organization>>(OrganizationData);
             
-            foreach(var organization in organizations)
+            foreach(var organization in organizations!)
             {
-                context.Organizations.Add(organization);
+                context.Organizations!.Add(organization);
             }
 
             await context.SaveChangesAsync();

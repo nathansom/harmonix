@@ -27,12 +27,13 @@ namespace API.Data
         
         public async Task<OrgLike> GetOrganizationLike(int OrgId, int likedUserId)
         {
-            return await _context.OrgLikes.FindAsync(OrgId, likedUserId);
+            var result = await _context.OrgLikes!.FindAsync(OrgId, likedUserId);
+            return result!;
         }
 
         public async Task<IEnumerable<OrgLikeDto>> GetOrganizationLikesByOrgId(int orgId)
         {
-            return await _context.OrgLikes
+            return await _context.OrgLikes!
                             .Where(o => o.OrgId == orgId)
                             .Include(o => o.Org)
                             .Include(o => o.LikedUser)
@@ -42,19 +43,21 @@ namespace API.Data
 
         public async Task<Organization> GetOrganizationWithLikes(int orgId)
         {
-            return await _context.Organizations
-                .Include(x => x.LikedByUser)
-                .FirstOrDefaultAsync(x => x.Id ==orgId);
+            var result = await _context.Organizations!
+                .Include(x => x.LikedByUser!)
+                .FirstOrDefaultAsync(x => x.Id == orgId);
+
+            return result!;
         }
 
         public async Task<PagedList<OrganizationDto>> GetLikedOrganizations(OrgLikeParams orgLikeParams)
         {
-            var orgs = _context.Organizations.OrderBy(o => o.Name).AsQueryable();
-            var orgLikes = _context.OrgLikes.OrderBy(o => o.Org.Name).AsQueryable();
+            var orgs = _context.Organizations!.OrderBy(o => o.Name).AsQueryable();
+            var orgLikes = _context.OrgLikes!.OrderBy(o => o.Org!.Name).AsQueryable();
 
             
             orgLikes = orgLikes.Where(like => like.LikedUserId == orgLikeParams.UserId);
-            orgs = orgLikes.Select(like => like.Org);
+            orgs = orgLikes.Select(like => like.Org)!;
 
             var result = await GetPaginatedResult<OrganizationDto>(orgs.ProjectTo<OrganizationDto>(_mapper.ConfigurationProvider), orgLikeParams);
 
@@ -78,10 +81,10 @@ namespace API.Data
         public async Task<PagedList<MemberDto>> GetLikedByUsers(OrgLikeParams orgLikeParams, int orgId)
         {
             var users = _context.Users.OrderBy(u => u.UserName).AsQueryable();
-            var orgLikes = _context.OrgLikes.OrderBy(o => o.Org.Name).AsQueryable();
+            var orgLikes = _context.OrgLikes!.OrderBy(o => o.Org!.Name).AsQueryable();
 
             orgLikes = orgLikes.Where(like => like.OrgId == orgId);
-            users = orgLikes.Select(like => like.LikedUser);
+            users = orgLikes.Select(like => like.LikedUser)!;
 
             var result = await GetPaginatedResult<MemberDto>(users.ProjectTo<MemberDto>(_mapper.ConfigurationProvider), orgLikeParams);
 
@@ -98,14 +101,14 @@ namespace API.Data
 
         public bool UnlikeOrganization(int orgId, int userId)
         {
-            var orgLikes = _context.OrgLikes.Where(o => o.OrgId == orgId).AsQueryable();
+            var orgLikes = _context.OrgLikes!.Where(o => o.OrgId == orgId).AsQueryable();
             var orgLike = orgLikes.Where(o => o.LikedUserId == userId).SingleOrDefault();
 
             var likeExisted = orgLike != null;
 
             if (likeExisted)
             {
-                _context.OrgLikes.Remove(orgLike);
+                _context.OrgLikes!.Remove(orgLike!);
             }
 
             return likeExisted;

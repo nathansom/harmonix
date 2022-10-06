@@ -77,16 +77,16 @@ namespace API.Controllers
         PublicId = result.PublicId
       };
 
-      if (user.Photos.Count == 0)
+      if (user != null && user.Photos != null && user.Photos.Count == 0)
       {
         photo.IsMain = true;
       }
 
-      user.Photos.Add(photo);
+      if (user != null && user.Photos != null) user.Photos.Add(photo);
 
       if (await _userRepository.SaveAllAsync())
       {
-        return CreatedAtRoute("GetUser", new { username = user.UserName }, _mapper.Map<PhotoDto>(photo));
+        return CreatedAtRoute("GetUser", new { username = user!.UserName }, _mapper.Map<PhotoDto>(photo));
       }
 
 
@@ -98,13 +98,13 @@ namespace API.Controllers
     {
       var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
-      var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+      var photo = user.Photos!.FirstOrDefault(x => x.Id == photoId);
 
-      if (photo.IsMain) return BadRequest("This is already your main photo");
+      if (photo != null && photo.IsMain) return BadRequest("This is already your main photo");
 
-      var currentMain = user.Photos.FirstOrDefault(x => x.IsMain);
+      var currentMain = user.Photos!.FirstOrDefault(x => x.IsMain);
       if (currentMain != null) currentMain.IsMain = false;
-      photo.IsMain = true;
+      if (photo != null) photo.IsMain = true;
 
       if (await _userRepository.SaveAllAsync()) return NoContent();
 
@@ -116,7 +116,7 @@ namespace API.Controllers
     {
       var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
 
-      var photo = user.Photos.FirstOrDefault(x => x.Id == photoId);
+      var photo = user.Photos!.FirstOrDefault(x => x.Id == photoId);
 
       if (photo == null) return NotFound();
 
@@ -128,7 +128,7 @@ namespace API.Controllers
         if (result.Error != null) return BadRequest(result.Error.Message);
       }
 
-      user.Photos.Remove(photo);
+      user.Photos!.Remove(photo);
 
       if (await _userRepository.SaveAllAsync()) return Ok();
 

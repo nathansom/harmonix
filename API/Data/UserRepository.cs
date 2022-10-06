@@ -22,10 +22,12 @@ namespace API.Data
 
         public async Task<MemberDto> GetMemberAsync(string username)
         {
-            return await _context.Users
+            var result = await _context.Users
               .Where(x => x.UserName == username)
               .ProjectTo<MemberDto>(_mapper.ConfigurationProvider)
               .SingleOrDefaultAsync();
+
+            return result!;
         }
 
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
@@ -35,17 +37,17 @@ namespace API.Data
             if (userParams.CurrentUsername != null)
                 query = query.Where(u => u.UserName != userParams.CurrentUsername);
             if (userParams.Occupation != null)            
-                query = query.Where(u => u.Occupation.ToLower().Trim().Contains(userParams.Occupation.ToLower().Trim()));                                    
+                query = query.Where(u => u.Occupation!.ToLower().Trim().Contains(userParams.Occupation.ToLower().Trim()));                                    
             if (userParams.Skill != null)
-                query = query.Where(u => u.Skills.ToLower().Trim().Contains(userParams.Skill.ToLower().Trim()));
+                query = query.Where(u => u.Skills!.ToLower().Trim().Contains(userParams.Skill.ToLower().Trim()));
             if (userParams.Genre != null)
                 query = query.Where(u => u.Genres.ToLower().Trim().Contains(userParams.Genre.ToLower().Trim()));
             if (userParams.City != null)
-                query = query.Where(u => u.City.ToLower().Trim().Contains(userParams.City.ToLower().Trim()));
+                query = query.Where(u => u.City!.ToLower().Trim().Contains(userParams.City.ToLower().Trim()));
             if (userParams.ProvinceOrState != null)
-                query = query.Where(u => u.ProvinceOrState.ToLower().Trim().Contains(userParams.ProvinceOrState.ToLower().Trim()));
+                query = query.Where(u => u.ProvinceOrState!.ToLower().Trim().Contains(userParams.ProvinceOrState.ToLower().Trim()));
             if (userParams.Country != null)
-                query = query.Where(u => u.Country.ToLower().Trim().Contains(userParams.Country.ToLower().Trim()));
+                query = query.Where(u => u.Country!.ToLower().Trim().Contains(userParams.Country.ToLower().Trim()));
 
             query = userParams.OrderBy switch
             {
@@ -62,16 +64,20 @@ namespace API.Data
 
         public async Task<AppUser> GetUserByIdAsync(int id)
         {
-            return await _context.Users.FindAsync(id);
+            var result = await _context.Users.FindAsync(id);
+
+            return result!;
         }
 
         public async Task<AppUser> GetUserByUsernameAsync(string username)
         {
-            return await _context.Users
-              .Include(p => p.Photos)
-              .Include(j => j.CreatedJobs)
-              .Include(j => j.SavedJobs)
+            var result = await _context.Users
+              .Include(p => p.Photos!)
+              .Include(j => j.CreatedJobs!)
+              .Include(j => j.SavedJobs!)
               .SingleOrDefaultAsync(x => x.UserName == username);
+
+            return result!;
         }
 
         public async Task<IEnumerable<AppUser>> GetUsersAsync()
