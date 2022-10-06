@@ -31,8 +31,9 @@ namespace API.Data
         public async Task<PagedList<MemberDto>> GetMembersAsync(UserParams userParams)
         {
             var query = _context.Users.AsQueryable();
-            query = query.Where(u => u.UserName != userParams.CurrentUsername);
-
+            
+            if (userParams.CurrentUsername != null)
+                query = query.Where(u => u.UserName != userParams.CurrentUsername);
             if (userParams.Occupation != null)            
                 query = query.Where(u => u.Occupation.ToLower().Trim().Contains(userParams.Occupation.ToLower().Trim()));                                    
             if (userParams.Skill != null)
