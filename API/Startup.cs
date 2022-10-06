@@ -52,8 +52,8 @@ namespace API
                    x.WithOrigins("https://harmonix-fe.azurewebsites.net")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
-                    .AllowCredentials()
-                    .SetIsOriginAllowed((host) => true));
+                    .AllowCredentials());
+                    //.SetIsOriginAllowed((host) => true));
 
             app.UseAuthentication();
 
