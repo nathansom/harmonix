@@ -12,11 +12,7 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddSingleton<PresenceTracker>();
-            services.Configure<CloudinarySettings>(config.GetSection(new CloudinarySettings {
-                CloudName = config["CloudName"],
-                ApiKey = config["ApiKey"],
-                ApiSecret = config["ApiSecret"]
-            }.ToString()));
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IPhotoService, PhotoService>();
             services.AddScoped<ILikesRepository, LikesRepository>();
