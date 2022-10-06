@@ -24,7 +24,7 @@ namespace API.Controllers
       _mapper = mapper;
     }
 
-    public IUserRepository UserRepository { get; }
+    //public IUserRepository UserRepository { get; }
 
     [HttpGet]
     public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)

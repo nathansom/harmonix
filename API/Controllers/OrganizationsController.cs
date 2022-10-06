@@ -19,7 +19,7 @@ namespace API.Controllers
         private readonly IOrganizationRepository _organizationRepository;
         private readonly IMapper _mapper;
         public readonly IPhotoService _photoService;
-        private readonly UserManager<AppUser> _userManager;
+        public UserManager<AppUser> _userManager { get; }
 
         public OrganizationsController(UserManager<AppUser> userManager, IUserRepository userRepository, IOrganizationRepository organizationRepository,
                                         IMapper mapper, IPhotoService photoService)
@@ -32,7 +32,7 @@ namespace API.Controllers
             _mapper = mapper;
 
         }
-        [AllowAnonymous]
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetOrganizations([FromQuery] OrganizationParams organizationParams)
         {
