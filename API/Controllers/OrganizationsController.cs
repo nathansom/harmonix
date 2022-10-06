@@ -36,6 +36,10 @@ namespace API.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<OrganizationDto>>> GetOrganizations([FromQuery] OrganizationParams organizationParams)
         {
+            var userId = User.GetUserId();
+            var user = await _userRepository.GetUserByIdAsync(userId);
+            if (organizationParams.Country == null) organizationParams.Country = user.Country;
+
             var organizations = await _organizationRepository.GetCompactOrganizationsAsync(organizationParams);
 
             Response.AddPaginationHeader(organizations.CurrentPage, organizations.PageSize,
