@@ -79,7 +79,7 @@ namespace API.Controllers
             var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
             var job = await _jobRepository.GetJobByIdAsync(id);
 
-            if (job.JobPoster.Id != user.Id) return BadRequest("You are not permitted to perform this action. Nice try ;)");
+            if (job.JobPoster!.Id != user.Id) return BadRequest("You are not permitted to perform this action. Nice try ;)");
 
             if (job.JobPoster != user) return BadRequest("Job Not Found");
 
@@ -138,7 +138,7 @@ namespace API.Controllers
             if (job == null) return NotFound();
 
             var orgs = await _organizationRepository.GetOrganizationsAsync();
-            var affiliatedOrgs = orgs.Where(o => o.Members.Contains(user));
+            var affiliatedOrgs = orgs.Where(o => o.Members!.Contains(user));
             var thisOrg = await _organizationRepository.GetOrganizationByIdAsync(id);
 
             var userRoles = await _userManager.GetRolesAsync(user);
@@ -147,7 +147,7 @@ namespace API.Controllers
             var IsOrgMember = affiliatedOrgs.Contains(thisOrg);
             var IsOrgAdmin = userRoles.Contains("OrgAdmin") && IsOrgMember;
             var IsOrgModerator = userRoles.Contains("OrgModerator") && IsOrgMember;
-            var IsJobPoster = job.JobPoster.Id == user.Id;
+            var IsJobPoster = job.JobPoster!.Id == user.Id;
 
             if (IsAdmin | IsModerator | IsOrgAdmin | IsOrgModerator | IsJobPoster)
             {

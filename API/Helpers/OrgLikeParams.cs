@@ -9,6 +9,6 @@ namespace API.Helpers
     {
         public int UserId { get; set; }
         public int OrgId { get; set; }
-        public string Predicate { get; set; }
+        public string? Predicate { get; set; }
     }
 }

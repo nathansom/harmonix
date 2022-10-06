@@ -7,10 +7,10 @@ namespace API.Entities
 {
     public class JobSave
     {
-        public Job SavedJob{get;set;}
+        public Job? SavedJob{get;set;}
         public int JobId {get;set;}
 
-        public AppUser SavedUser{get;set;}
+        public AppUser? SavedUser{get;set;}
 
         public int SavedUserId{get;set;}
     } 
