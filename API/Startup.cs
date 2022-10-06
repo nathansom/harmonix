@@ -50,7 +50,7 @@ namespace API
 
             app.UseCors(x => 
                    x.WithOrigins("https://harmonix-fe.azurewebsites.net")
-                    .SetIsOriginAllowed((host) => true)
+                    //.SetIsOriginAllowed((host) => true)
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials());
