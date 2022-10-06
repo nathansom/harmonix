@@ -27,12 +27,12 @@ namespace API.Controllers
     //public IUserRepository UserRepository { get; }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery]UserParams userParams)
+    public async Task<ActionResult<IEnumerable<MemberDto>>> GetUsers([FromQuery] UserParams userParams)
     {
       if (userParams.CurrentUsername == null) userParams.CurrentUsername = User.GetUsername();
 
-      var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
-      userParams.CurrentUsername = User.GetUsername();
+      //var user = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
+      //userParams.CurrentUsername = User.GetUsername();
 
       var users = await _userRepository.GetMembersAsync(userParams);
 

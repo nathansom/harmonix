@@ -275,7 +275,7 @@ namespace API.Controllers
 
             if (org.Members.Contains(user)) return BadRequest("This user is already a member of this organization.");
 
-            // ! Private feature
+            // Private feature
             // var owner = await _userRepository.GetUserByUsernameAsync(User.GetUsername());
             // if (owner == null) return NotFound("Credential doesn't exist. Please log in again");
 
@@ -293,7 +293,7 @@ namespace API.Controllers
             // }
             // return Unauthorized("You are not permitted to perform this action.");
 
-            // ! Public feauture
+            // Public feauture
             org.Members.Add(user);
 
             if (await _organizationRepository.SaveAllAsync())
