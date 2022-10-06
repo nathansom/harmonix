@@ -48,10 +48,12 @@ namespace API
 
             app.UseRouting();
 
-            app.UseCors(x => x.AllowAnyHeader()
+            app.UseCors(x => 
+                   x.WithOrigins("https://harmonix-fe.azurewebsites.net")
+                    .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials()
-                    .WithOrigins("https://harmonix-fe.azurewebsites.net"));
+                    .SetIsOriginAllowed((host) => true));
 
             app.UseAuthentication();
 
