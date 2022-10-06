@@ -35,8 +35,7 @@ namespace API.Data
 
         public async Task<PagedList<JobDto>> GetJobsByTitleAsync(JobParams jobParams, string title)
         {
-            var jobs = _context.Jobs.Where(t => t.Title.ToLower().Contains(title.ToLower())).AsQueryable();
-            var query = jobs;
+            var query = _context.Jobs.Where(t => t.Title.ToLower().Contains(title.ToLower())).AsQueryable();
 
             if (jobParams.Title != null)
                 query = query.Where(j => j.Title.ToLower().Trim().Contains(jobParams.Title.ToLower().Trim())).AsQueryable();

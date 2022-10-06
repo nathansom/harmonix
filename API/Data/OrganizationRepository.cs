@@ -30,8 +30,7 @@ namespace API.Data
 
         public async Task<PagedList<OrganizationDto>> GetCompactOrganizationsAsync(OrganizationParams organizationParams)
         {
-            var organizations = _context.Organizations.AsQueryable();
-            var query = organizations;
+            var query = _context.Organizations.AsQueryable();
 
             if (organizationParams.Name != null)
                 query = query.Where(o => o.Name.ToLower().Trim().Contains(organizationParams.Name.ToLower().Trim())).AsQueryable();
