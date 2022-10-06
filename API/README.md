@@ -1,1 +1,1 @@
-Please don't forget to redo migrations eveythime you modify the entities.
+Please don't forget to redo migrations eveythime you modify the entities
