@@ -49,7 +49,8 @@ namespace API
             app.UseRouting();
 
             app.UseCors(x => 
-                   x.WithOrigins("https://harmonix-fe.azurewebsites.net")
+                   x.WithOrigins("https://harmonix-fe.azurewebsites.net",
+                                 "https://polite-desert-0eb459a10.2.azurestaticapps.net")
                     //.SetIsOriginAllowed((host) => true)
                     .AllowAnyHeader()
                     .AllowAnyMethod()
